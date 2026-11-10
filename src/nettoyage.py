@@ -7,7 +7,7 @@ import pandas as pd
 BRONZE = Path("data/01_bronze/produits")
 SILVER = Path("data/02_silver/produits")
 
-RINCE = re.compile(r"shampo|douche|savon|nettoyant|d[ée]maquill|masque|bain|gommage", re.I)
+RINCE = re.compile(r"shampo|douche|savon|nettoyant|d[ée]maquill|masque|bain|gommage|rasage|dentifrice|dentargile", re.I)
 NON_RINCE = re.compile(r"cr[èe]me|lait|huile|baume|s[ée]rum|eau de (toilette|parfum)|parfum|d[ée]odorant|lotion|soin", re.I)
 SEPARATEURS = re.compile(r",|;|\s[-–•·]\s|\n|\.\s")
 

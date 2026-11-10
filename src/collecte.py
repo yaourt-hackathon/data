@@ -1,4 +1,4 @@
-"""Collecte bronze : produits Open Beauty Facts par marque (API v2 publique, licence ODbL)."""
+"""Collecte bronze PRODUITS : Open Beauty Facts par marque (API v2 publique, licence ODbL)."""
 import time
 from datetime import datetime
 from pathlib import Path
@@ -12,7 +12,7 @@ CHAMPS = ("code,product_name,product_name_fr,brands,brands_tags,ingredients_text
           "ingredients_text_fr,countries_tags,categories_tags,last_modified_t")
 HEADERS = {"User-Agent": "YaourtHackathon/0.1 (projet etudiant HETIC)"}
 PAUSE = 7  # secondes entre deux appels
-SORTIE = Path("data/bronze")
+SORTIE = Path("data/01_bronze/produits")
 
 
 def collecter(marque):
@@ -48,7 +48,8 @@ def main():
     df["date_extraction"] = maintenant.isoformat(timespec="seconds")
     df["source"] = "Open Beauty Facts API v2 (ODbL)"
 
-    fichier = SORTIE / f"brz_produits_obf_{maintenant:%Y%m%d}.csv"
+    SORTIE.mkdir(parents=True, exist_ok=True)
+    fichier = SORTIE / f"brz_msd_produits_obf_{maintenant:%Y%m%d}.csv"
     df.to_csv(fichier, index=False, encoding="utf-8")
     print(f"\n{len(df)} lignes -> {fichier}")
 

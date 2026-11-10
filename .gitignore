@@ -1,0 +1,16 @@
+# Secrets
+.env
+*.env
+
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Index RAG (se reconstruit)
+chroma_db/
+
+# Mac / éditeur
+.DS_Store
+.vscode/

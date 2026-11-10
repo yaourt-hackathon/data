@@ -4,6 +4,7 @@ from typing import Literal
 
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field
 
 RACINE = Path(__file__).resolve().parent.parent
@@ -77,7 +78,7 @@ app = FastAPI(
     description="Équipe 7 · Yaourt — exposition des marques aux nouveaux allergènes (UE 2023/1545). "
                 "Données réelles Open Beauty Facts. Liste d'allergènes provisoire, à vérifier sur EUR-Lex. "
                 "On parle d'« exposition probable », jamais de « non-conformité ».",
-    version="0.3.0",
+    version="0.3.1",
 )
 
 SOURCE = {"reglement": "UE 2023/1545", "catalogue": "Open Beauty Facts (ODbL)",
@@ -90,6 +91,12 @@ def lire(chemin):
     if not chemin.exists():
         raise HTTPException(status_code=503, detail=f"Données absentes : {chemin.name}. Lancer le pipeline.")
     return pd.read_csv(chemin, dtype={"code": str}).fillna("")
+
+
+@app.get("/", include_in_schema=False)
+def racine():
+    """L'adresse de base ouvre directement Swagger."""
+    return RedirectResponse("/docs")
 
 
 @app.get("/health", tags=["Technique"], response_model=Sante)

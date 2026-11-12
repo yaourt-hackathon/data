@@ -17,9 +17,9 @@ permissions:
 
 jobs:
   data-api:
-    # Seconde garde après la protection de main : poussé par un autre compte,
-    # rien ne part
-    if: github.actor == 'Oomaxime'
+    # Seconde garde après la protection de main : poussé, ou relancé (Re-run),
+    # par un autre compte, rien ne part
+    if: github.actor == 'Oomaxime' && github.triggering_actor == 'Oomaxime'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     # Le jeton Railway vit dans cet environnement, ouvert à main seulement

@@ -8,12 +8,13 @@ ceux du LLM, une fois relus, les remplacent dans l'API (fichier gld_fct_textes_i
 import pandas as pd
 
 from commun import AUJOURDHUI, GOLD, MART, SILVER, ecrire, lire, pluriel
+from detection import lire_produits
 
 COLONNES = ["evenement_id", "compte_id", "nom_compte", "statut", "groupe_appel", "rang", "score", "raison_classement",
             "fait", "question", "nb_produits_analyses", "nb_probable", "nb_possible", "part_probable",
             "confiance", "date_calcul", "crm_fictif"]
 COL_FICHE = ["compte_id", "evenement_id", "code", "marque", "nom", "niveau", "elements_directs", "elements_indices",
-             "type_rincage", "date_fiche", "confiance", "reference_parfum"]
+             "type_rincage", "date_fiche", "confiance", "reference_parfum", "ingredients"]
 
 
 def score(nb_probable, nb_possible, nb_analyses):
@@ -79,6 +80,8 @@ def main():
     parfums = ventes[ventes["code_produit"] != ""].drop_duplicates("code_produit").set_index("code_produit")["reference_parfum"]
     fiche = impact[impact["niveau"].isin(["probable", "possible"])].copy()
     fiche["reference_parfum"] = fiche["code"].map(parfums).fillna("")
+    # L'étiquette telle quelle : l'application y surligne les ingrédients repérés.
+    fiche["ingredients"] = fiche["code"].map(lire_produits().set_index("code")["ingredients"]).fillna("")
     fiche = fiche.sort_values(["compte_id", "evenement_id", "niveau", "nb_directs", "code"],
                               ascending=[True, True, False, False, True])[COL_FICHE]
     ecrire(fiche, MART / "mrt_fiche_compte.csv")

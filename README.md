@@ -60,6 +60,11 @@ Les comptes, leur statut client ou prospect, les commerciaux (`KAM-01`…) et le
 pour la démonstration et marqués `fictif`. Ils ne disent rien de la relation réelle entre ces marques et Givaudan.
 Aucun nom de personne, nulle part.
 
+## Documentation
+
+`docs/contrat_api_v0.4.md` : les routes, les champs et ce qu'ils veulent dire côté application.
+`docs/benchmark_llm.pdf` : la comparaison des modèles locaux (la version qui fait foi est à la racine du fork `example-rag`).
+
 ## API (v0.4.0)
 
 `/health`, `/marques`, `/exposition?marque=` (inchangées), `/evenements`, `/evenements/{evenement_id}/appels`,

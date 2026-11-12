@@ -83,6 +83,20 @@ Renvoie le compte, ses marques, ses chiffres de ventes fictifs (`classe_ca`, `nb
 `quantite_kg_annee`) et, pour chaque événement qui le touche, la liste des produits concernés
 avec leurs ingrédients repérés.
 
+C'est l'écran « avant le rendez-vous » : tout s'y trouve sans rappeler `/evenements`.
+Chaque bloc d'événement porte, en plus du `fait` et de la `question` :
+
+| Champ | À quoi il sert |
+|---|---|
+| `source_nom`, `source_url` | Ouvrir la source du fait depuis la fiche |
+| `date_echeance` | Vide s'il n'y en a pas |
+| `nb_probable`, `nb_possible` | Afficher « 5 sur 6 » sans recompter la liste de produits |
+| `confiance` | Le classement est fragile sous 10 produits analysés |
+| `origine_textes` | `gabarit` ou `llm_valide`, comme dans la liste d'appels |
+
+Chaque produit porte `reference_parfum` : la référence fictive du parfum vendu pour ce produit,
+vide si on n'en vend pas. C'est ce qui relie le produit du client à ce que Givaudan lui fournit.
+
 ## GET /evenements
 
 La liste des événements calculés, avec pour chacun le nombre de comptes à appeler.

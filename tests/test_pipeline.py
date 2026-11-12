@@ -102,3 +102,14 @@ def test_api_fiche_compte(client):
     assert c["crm_fictif"] is True and c["commercial"].startswith("KAM-")
     assert sum(p["niveau"] == "probable" for p in c["evenements"][0]["produits"]) == premier["nb_probable"]
     assert client.get("/comptes/CPT-999").status_code == 404
+
+
+def test_api_fiche_compte_porte_de_quoi_preparer_un_rendez_vous(client):
+    """L'écran « avant le rendez-vous » doit se construire sans rappeler /evenements."""
+    premier = client.get("/evenements/EVT-001/appels").json()["clients"][0]
+    bloc = client.get(f"/comptes/{premier['compte_id']}").json()["evenements"][0]
+    assert bloc["source_nom"] and bloc["source_url"].startswith("http")   # ouvrir la source depuis la fiche
+    assert bloc["nb_probable"] == premier["nb_probable"]                  # mêmes chiffres que la liste d'appels
+    assert bloc["nb_possible"] == premier["nb_possible"]
+    assert bloc["confiance"] == premier["confiance"]
+    assert bloc["origine_textes"] in ("gabarit", "llm_valide")

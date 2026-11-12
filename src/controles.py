@@ -37,9 +37,13 @@ def controler():
     verifier(len(produits) > 0, "aucun produit analysable")
     verifier(not (produits["code"] == "").any(), "produit sans code")
     verifier(produits["code"].is_unique, "code produit en double")
-    cles = produits.apply(lambda l: slug(l["marque"]) + "::" + slug(l["nom"]), axis=1)
-    doublons = sorted(cles[cles.duplicated() & (cles != "::")].unique())
-    verifier(not doublons, f"même produit présent dans deux sources : {doublons[:3]}")
+    # Deux références d'une même source (deux contenances) sont normales ; le même produit
+    # vu par deux sources ne l'est pas : lire_produits() doit l'avoir rapproché.
+    cles = produits.assign(cle=produits.apply(lambda l: slug(l["marque"]) + "::" + slug(l["nom"]), axis=1))
+    cles = cles[cles["cle"] != "::"]
+    vues = cles.groupby("cle")["source"].nunique()
+    doublons = sorted(vues[vues > 1].index)
+    verifier(not doublons, f"même produit vu par deux sources et non rapproché : {doublons[:3]}")
 
     # chaque marque collectée est rattachée à un compte
     sans_compte = sorted(set(produits["marque"]) - set(marques["marque"]))
@@ -71,6 +75,22 @@ def controler():
         verifier((appels["fait"] != "").all() and (appels["question"] != "").all(), "appels : fait ou question vide")
         verifier(set(appels["groupe_appel"]) <= {"clients", "prospects"}, "appels : groupe inconnu")
     verifier(len(evenements) == 0 or len(appels) > 0, "des événements sont calculés mais la liste d'appels est vide")
+
+    # textes du LLM : un fait validé qui ne cite plus les nombres actuels est périmé
+    textes = GOLD / "gld_fct_textes_ia.csv"
+    if textes.exists() and len(appels):
+        t = lire(textes)
+        t = t[(t["type_texte"] == "fait") & (t["statut_validation"] == "valide")]
+        cles = appels.set_index(["evenement_id", "compte_id"])
+        perimes = []
+        for r in t.itertuples():
+            if (r.evenement_id, r.compte_id) not in cles.index:
+                continue
+            a = cles.loc[(r.evenement_id, r.compte_id)]
+            nombres = re.findall(r"\d+", r.texte)
+            if a["nb_probable"] not in nombres or a["nb_produits_analyses"] not in nombres:
+                perimes.append(f"{r.evenement_id}/{r.compte_id}")
+        verifier(not perimes, f"textes du LLM périmés, à régénérer : {len(perimes)} ({', '.join(perimes[:3])})")
     return erreurs
 
 

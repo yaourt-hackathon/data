@@ -102,3 +102,30 @@ def test_api_fiche_compte(client):
     assert c["crm_fictif"] is True and c["commercial"].startswith("KAM-")
     assert sum(p["niveau"] == "probable" for p in c["evenements"][0]["produits"]) == premier["nb_probable"]
     assert client.get("/comptes/CPT-999").status_code == 404
+
+
+def test_api_fiche_compte_porte_de_quoi_preparer_un_rendez_vous(client):
+    """L'écran « avant le rendez-vous » doit se construire sans rappeler /evenements."""
+    premier = client.get("/evenements/EVT-001/appels").json()["clients"][0]
+    bloc = client.get(f"/comptes/{premier['compte_id']}").json()["evenements"][0]
+    assert bloc["source_nom"] and bloc["source_url"].startswith("http")   # ouvrir la source depuis la fiche
+    assert bloc["nb_probable"] == premier["nb_probable"]                  # mêmes chiffres que la liste d'appels
+    assert bloc["nb_possible"] == premier["nb_possible"]
+    assert bloc["confiance"] == premier["confiance"]
+    assert bloc["origine_textes"] in ("gabarit", "llm_valide")
+
+
+def test_un_produit_vu_plusieurs_fois_garde_la_capture_la_plus_recente():
+    """Trois mois de scraping : le même code-barres revient à plusieurs dates."""
+    import pandas as pd
+    from detection import garder_la_plus_recente
+    produits = pd.DataFrame({
+        "code": ["3001", "3001", "3002"],
+        "nom": ["Gel douche", "Gel douche", "Shampooing"],
+        "ingredients": ["ancienne formule", "nouvelle formule", "autre"],
+        "date_extraction": ["2026-09-01", "2026-11-12", "2026-10-01"],
+        "date_fiche": ["2026-08-20", "2026-11-02", "2026-09-15"],
+    })
+    garde = garder_la_plus_recente(produits)
+    assert len(garde) == 2
+    assert garde[garde["code"] == "3001"]["ingredients"].iloc[0] == "nouvelle formule"

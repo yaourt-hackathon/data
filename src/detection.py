@@ -19,8 +19,21 @@ COLONNES = ["evenement_id", "code", "marque", "nom", "type_rincage", "niveau", "
             "elements_indices", "nb_indices", "contient_parfum", "motif", "date_fiche", "confiance", "source"]
 
 
+def garder_la_plus_recente(produits):
+    """Un même code-barres vu plusieurs fois : on garde la capture la plus récente.
+
+    Une source rafraîchie dans le temps (trois mois de scraping) contient le même produit
+    à plusieurs dates. Sans ça, on afficherait une étiquette périmée alors qu'on en a une à jour.
+    """
+    ordre = produits.assign(
+        _extraction=pd.to_datetime(produits.get("date_extraction", ""), errors="coerce"),
+        _fiche=pd.to_datetime(produits.get("date_fiche", ""), errors="coerce"),
+    ).sort_values(["_extraction", "_fiche"], ascending=False, na_position="last", kind="stable")
+    return produits.loc[ordre.drop_duplicates(subset="code", keep="first").index]
+
+
 def cle_produit(ligne):
-    """Clé de rapprochement entre sources : la marque et le nom, sans accent ni ponctuation.
+    """Clé de rapprochement ENTRE SOURCES : la marque et le nom, sans accent ni ponctuation.
 
     Toutes les sources n'ont pas de code-barres (Cosmébio n'en publie pas). Sans ça, le même
     produit vu par deux sources compterait deux fois et fausserait le classement des comptes.
@@ -28,23 +41,31 @@ def cle_produit(ligne):
     return slug(ligne["marque"]) + "::" + slug(ligne["nom"])
 
 
-def lire_produits():
-    """Tous les silver produits (collecte publique + fichiers de sites), sans les rejets ni les doublons."""
+def lire_produits(bavard=False):
+    """Tous les silver produits (collecte publique + fichiers de sites), sans les rejets ni les doublons.
+
+    Deux niveaux de dédoublonnage, et un seul s'applique à l'intérieur d'une source :
+      - même code : toujours un doublon, on garde la première ligne ;
+      - même marque et même nom, mais SOURCES DIFFÉRENTES : c'est le même produit vu deux fois,
+        on garde la ligne qui a un vrai code-barres.
+    Dans une même source, deux codes-barres pour un même nom sont deux références réelles
+    (deux contenances, deux emballages) : on les garde toutes les deux.
+    """
     fichiers = [f for f in sorted(PRODUITS.glob("slv_msd_produits*.csv")) if not f.stem.endswith("_rejets")]
     produits = pd.concat([lire(f) for f in fichiers], ignore_index=True)
     avant = len(produits)
-    produits = produits.drop_duplicates(subset="code", keep="first")
+    produits = garder_la_plus_recente(produits)
 
-    # Même produit vu par deux sources : on garde la ligne qui a un vrai code-barres.
     produits["_cle"] = produits.apply(cle_produit, axis=1)
     produits["_sans_ean"] = produits["code"].str.startswith("URL-")
-    produits = produits.sort_values("_sans_ean", kind="stable")
-    nommes = produits[produits["_cle"] != "::"]
-    anonymes = produits[produits["_cle"] == "::"]
-    produits = pd.concat([nommes.drop_duplicates(subset="_cle", keep="first"), anonymes])
+    nb_sources = produits.groupby("_cle")["source"].transform("nunique")
+    entre_sources = (nb_sources > 1) & (produits["_cle"] != "::")
+    gardes = (produits[entre_sources].sort_values("_sans_ean", kind="stable")
+              .drop_duplicates(subset="_cle", keep="first"))
+    produits = pd.concat([produits[~entre_sources], gardes])
     retires = avant - len(produits)
-    if retires:
-        print(f"  {retires} doublons retirés (même code, ou même marque et même nom dans deux sources)")
+    if retires and bavard:
+        print(f"  {retires} doublons retirés : même code, ou même produit vu par deux sources")
     return produits.drop(columns=["_cle", "_sans_ean"]).sort_values("code").reset_index(drop=True)
 
 
@@ -127,7 +148,7 @@ def anciens_fichiers(impact):
 
 
 def main():
-    produits = lire_produits()
+    produits = lire_produits(bavard=True)
     evenements = lire(GOLD / "gld_dim_evenements.csv")
     regles = lire(SILVER / "evenements/slv_ref_regles_detection.csv")
     impact = detecter(produits, evenements, regles)

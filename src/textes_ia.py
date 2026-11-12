@@ -183,10 +183,19 @@ def main(argv=None):
     a_relire = {(r.evenement_id, r.compte_id) for r in deja.itertuples() if r.statut_validation == "a_relire"}
     garder = deja[deja["statut_validation"].isin(FIGES)] if args.rejouer else deja
 
+    faits_decides = {(r.evenement_id, r.compte_id): r.texte for r in deja.itertuples()
+                     if r.type_texte == "fait" and r.statut_validation in FIGES}
+
     lignes, rejets = [], []
     for appel in appels.to_dict("records"):
         cle = (appel["evenement_id"], appel["compte_id"])
-        if cle in figees or (cle in a_relire and not args.rejouer):
+        nombres = re.findall(r"\d+", faits_decides.get(cle, ""))
+        perime = cle in faits_decides and (str(appel["nb_probable"]) not in nombres
+                                   or str(appel["nb_produits_analyses"]) not in nombres)
+        if perime:
+            print(f"  {cle[0]} {cle[1]} : texte périmé, régénéré (les chiffres ont changé)")
+            garder = garder[~((garder["evenement_id"] == cle[0]) & (garder["compte_id"] == cle[1]))]
+        elif cle in figees or (cle in a_relire and not args.rejouer):
             continue
         produits = impact[(impact["evenement_id"] == cle[0]) & impact["marque"].isin(marques.get(cle[1], []))
                           & (impact["niveau"] == "probable")]

@@ -1,17 +1,17 @@
 compte_id,nom_compte,statut,groupe,source_groupe,pays,segment,commercial,dernier_contact,fictif,marques,nb_marques,nb_produits_analyses,annee_ventes,quantite_kg_annee,nb_parfums,classe_ca
-CPT-001,Florame,client,,,France,cosmetique_bio,KAM-01,2026-10-21,oui,florame,1,6,2026,490,2,B
-CPT-002,Cattier,prospect,,,France,cosmetique_bio,KAM-02,,oui,cattier,1,19,2026,0,0,
-CPT-003,Melvita,client,,,France,cosmetique_bio,KAM-03,2026-09-15,oui,melvita,1,14,2026,2150,3,A
-CPT-004,So'Bio étic,prospect,,,France,cosmetique_bio,KAM-01,,oui,so-bio-etic,1,22,2026,0,0,
-CPT-005,Centifolia,client,,,France,cosmetique_bio,KAM-02,2026-10-02,oui,centifolia,1,0,2026,190,2,C
-CPT-006,Natessance,prospect,,,France,soin_cheveux,KAM-03,,oui,natessance,1,0,2026,0,0,
-CPT-007,Lamazuna,prospect,,,France,hygiene_solide,KAM-01,,oui,lamazuna,1,0,2026,0,0,
-CPT-008,Coslys,client,,,France,hygiene_bio,KAM-02,2026-08-27,oui,coslys,1,0,2026,570,2,B
-CPT-009,Douce Nature,prospect,,,France,hygiene_bio,KAM-03,,oui,douce-nature,1,0,2026,0,0,
-CPT-010,Avril,prospect,,,France,maquillage_bio,KAM-01,,oui,avril,1,0,2026,0,0,
-CPT-011,Laboratoires de Biarritz,prospect,,,France,solaire,KAM-02,,oui,laboratoires-de-biarritz,1,0,2026,0,0,
-CPT-012,Le Petit Olivier,client,,,France,hygiene,KAM-03,2026-11-03,oui,le-petit-olivier,1,0,2026,2300,3,A
-CPT-013,Puressentiel,prospect,,,France,aromatherapie,KAM-01,,oui,puressentiel,1,0,2026,0,0,
-CPT-014,Energie Fruit,prospect,,,France,hygiene,KAM-02,,oui,energie-fruit,1,0,2026,0,0,
-CPT-015,La Rosée,client,,,France,soin_visage,KAM-03,2026-07-09,oui,la-rosee,1,0,2026,180,2,C
+CPT-001,Florame,client,,,France,cosmetique_bio,KAM-01,2026-10-21,oui,florame,1,231,2026,490,2,B
+CPT-002,Cattier,prospect,,,France,cosmetique_bio,KAM-02,,oui,cattier,1,229,2026,0,0,
+CPT-003,Melvita,client,,,France,cosmetique_bio,KAM-03,2026-09-15,oui,melvita,1,20,2026,2150,3,A
+CPT-004,So'Bio étic,prospect,,,France,cosmetique_bio,KAM-01,,oui,so-bio-etic,1,191,2026,0,0,
+CPT-005,Centifolia,client,,,France,cosmetique_bio,KAM-02,2026-10-02,oui,centifolia,1,95,2026,190,2,C
+CPT-006,Natessance,prospect,,,France,soin_cheveux,KAM-03,,oui,natessance,1,82,2026,0,0,
+CPT-007,Lamazuna,prospect,,,France,hygiene_solide,KAM-01,,oui,lamazuna,1,7,2026,0,0,
+CPT-008,Coslys,client,,,France,hygiene_bio,KAM-02,2026-08-27,oui,coslys,1,112,2026,570,2,B
+CPT-009,Douce Nature,prospect,,,France,hygiene_bio,KAM-03,,oui,douce-nature,1,45,2026,0,0,
+CPT-010,Avril,prospect,,,France,maquillage_bio,KAM-01,,oui,avril,1,16,2026,0,0,
+CPT-011,Laboratoires de Biarritz,prospect,,,France,solaire,KAM-02,,oui,laboratoires-de-biarritz,1,4,2026,0,0,
+CPT-012,Le Petit Olivier,client,,,France,hygiene,KAM-03,2026-11-03,oui,le-petit-olivier,1,119,2026,2300,3,A
+CPT-013,Puressentiel,prospect,,,France,aromatherapie,KAM-01,,oui,puressentiel,1,168,2026,0,0,
+CPT-014,Energie Fruit,prospect,,,France,hygiene,KAM-02,,oui,energie-fruit,1,24,2026,0,0,
+CPT-015,La Rosée,client,,,France,soin_visage,KAM-03,2026-07-09,oui,la-rosee,1,8,2026,180,2,C
 CPT-016,Ladrôme,prospect,,,France,aromatherapie,KAM-01,,oui,ladrome,1,0,2026,0,0,

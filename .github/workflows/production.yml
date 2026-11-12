@@ -1,0 +1,35 @@
+# Met main en production sur Railway (ADR 0009 de l'application). main ne
+# reçoit que develop, mergé par Oomaxime : develop seul, recalcul de la nuit
+# compris, ne change jamais la prod.
+name: Production
+
+on:
+  push:
+    branches: [main]
+
+# Un déploiement à la fois : un merge pendant un déploiement attend son tour
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  data-api:
+    # Seconde garde après la protection de main : poussé par un autre compte,
+    # rien ne part
+    if: github.actor == 'Oomaxime'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Le jeton Railway vit dans cet environnement, ouvert à main seulement
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      # Version épinglée, comme les actions
+      - run: npm install --global @railway/cli@5.71.0
+      # Railway construit le Dockerfile, puis attend /health ; un échec fait
+      # échouer le job et laisse l'ancienne version en ligne
+      - run: railway up --service data-api --ci
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

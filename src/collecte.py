@@ -7,7 +7,9 @@ import pandas as pd
 import requests
 
 URL = "https://world.openbeautyfacts.org/api/v2/search"
-MARQUES = ["florame", "cattier", "melvita", "so-bio-etic"]
+MARQUES = ["florame", "cattier", "melvita", "so-bio-etic", "centifolia", "natessance",
+           "lamazuna", "coslys", "douce-nature", "avril", "laboratoires-de-biarritz",
+           "le-petit-olivier", "puressentiel", "energie-fruit", "la-rosee", "ladrome"]
 CHAMPS = ("code,product_name,product_name_fr,brands,brands_tags,ingredients_text,"
           "ingredients_text_fr,countries_tags,categories_tags,last_modified_t")
 HEADERS = {"User-Agent": "YaourtHackathon/0.1 (projet etudiant HETIC)"}

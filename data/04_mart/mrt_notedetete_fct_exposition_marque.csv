@@ -1,5 +1,16 @@
 marque,nb_produits,nb_probable,nb_possible,nb_indetermine,nb_non_detecte,part_probable,urgence,date_calcul
 cattier,19,6,4,1,8,0.32,haute,2026-11-12
 florame,6,5,0,0,1,0.83,haute,2026-11-12
+coslys,15,4,7,1,3,0.27,haute,2026-11-12
+puressentiel,6,4,0,0,2,0.67,haute,2026-11-12
+avril,14,3,6,2,3,0.21,moyenne,2026-11-12
+lamazuna,6,3,0,1,2,0.5,haute,2026-11-12
 melvita,14,3,5,2,4,0.21,moyenne,2026-11-12
+centifolia,10,2,3,1,4,0.2,moyenne,2026-11-12
+douce-nature,13,2,6,2,3,0.15,moyenne,2026-11-12
+le-petit-olivier,24,2,13,7,2,0.08,moyenne,2026-11-12
 so-bio-etic,22,2,13,2,5,0.09,moyenne,2026-11-12
+energie-fruit,7,1,2,4,0,0.14,moyenne,2026-11-12
+la-rosee,8,1,1,5,1,0.12,moyenne,2026-11-12
+laboratoires-de-biarritz,2,1,0,0,1,0.5,haute,2026-11-12
+natessance,6,0,2,2,2,0.0,faible,2026-11-12

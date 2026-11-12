@@ -122,5 +122,8 @@ Une tâche, une issue, une branche qui part de `develop`, une demande de fusion.
 Seule Judicha modifie `src/`. Les autres annulent les fichiers recalculés avant d'enregistrer :
 `git restore data/01_bronze data/02_silver data/03_gold data/04_mart`.
 
+`main` est la prod : seul Oomaxime y merge `develop`, en merge commit, et ce merge redéploie l'API sur Railway
+(`.github/workflows/production.yml`). La demande de fusion d'une tâche vise `develop`, jamais `main`.
+
 `src/exposition.py` et `src/ref_allergenes.py` sont les scripts de la première version. `detection.py` et
 `regles_detection/EVT-001.csv` les remplacent ; ils restent là le temps de vérifier, puis seront retirés.

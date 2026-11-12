@@ -3,6 +3,7 @@
 Règle de livraison : on ajoute des routes et des champs, on ne renomme ni ne retire rien
 (l'application génère son client à partir de /openapi.json).
 """
+import re
 from pathlib import Path
 from typing import Literal
 
@@ -266,9 +267,21 @@ def textes_valides():
     return {(r["evenement_id"], r["compte_id"], r["type_texte"]): r["texte"] for _, r in t.iterrows()}
 
 
+def a_jour(texte, a):
+    """Un fait doit citer les nombres actuels de la détection, sinon il décrit un état passé.
+
+    Les données sont recalculées plus souvent que les textes ne sont relus : sans ce contrôle,
+    l'écran afficherait « 5 de vos 6 produits » alors que le compte en a 162 sur 231.
+    """
+    nombres = re.findall(r"\d+", texte or "")
+    return str(a["nb_probable"]) in nombres and str(a["nb_produits_analyses"]) in nombres
+
+
 def appel_json(a, textes):
     cle = (a["evenement_id"], a["compte_id"])
     fait, question = textes.get(cle + ("fait",)), textes.get(cle + ("question",))
+    if fait and not a_jour(fait, a):
+        fait = None   # périmé : on retombe sur le gabarit, qui est recalculé
     return {"rang": int(a["rang"]), "compte_id": a["compte_id"], "nom_compte": a["nom_compte"], "statut": a["statut"],
             "score": int(a["score"]), "raison_classement": a["raison_classement"],
             "fait": fait or a["fait"], "question": question or a["question"],

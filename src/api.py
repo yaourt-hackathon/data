@@ -173,7 +173,8 @@ class Compte(BaseModel):
 app = FastAPI(
     title="API Note de tête",
     description="Équipe 7 · Yaourt — d'un événement à une liste d'appels de clients et de prospects. "
-                "Les comptes, leur statut et les ventes sont fictifs. "
+                "Les comptes, leur statut et les ventes sont fictifs : ils s'inspirent de Pegasus, "
+                "le CRM des commerciaux, et d'un export d'ERP, sans décrire aucune relation réelle. "
                 "Données réelles Open Beauty Facts. Liste d'allergènes provisoire, à vérifier sur EUR-Lex. "
                 "On parle d'« exposition probable », jamais de « non-conformité ».",
     version="0.4.0",

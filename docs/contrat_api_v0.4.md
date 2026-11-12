@@ -100,6 +100,10 @@ refuse tout texte contenant « non conforme », « illégal » ou « interdit »
 Les comptes, leur statut client ou prospect, les commerciaux (`KAM-01`…) et les ventes sont
 **fictifs** et marqués comme tels. Aucun nom de personne.
 
+Ils s'inspirent de **Pegasus**, le CRM des commerciaux de Givaudan, et de l'ERP pour les ventes.
+**Atlas**, le suivi des projets techniques relié à Pegasus, est la source naturelle d'une version
+ultérieure : il porte l'avancement des projets côté technique.
+
 ## Récupérer le client
 
 ```bash

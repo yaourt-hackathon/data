@@ -61,11 +61,25 @@ data/04_mart      ce que l'API lit
 Un événement n'est calculé que s'il est marqué `valide` (ou `test` pour un essai).
 `EVT-002` est un événement d'essai inventé par l'équipe : il sert à vérifier que la chaîne accepte plusieurs événements.
 
-## Données fictives
+## Données fictives, et les systèmes réels dont elles s'inspirent
 
 Les comptes, leur statut client ou prospect, les commerciaux (`KAM-01`…) et les ventes sont inventés
 pour la démonstration et marqués `fictif`. Ils ne disent rien de la relation réelle entre ces marques et Givaudan.
 Aucun nom de personne, nulle part.
+
+Chez Givaudan, ces données vivent dans deux systèmes : **Pegasus**, le CRM des commerciaux
+(qualification et suivi des projets), et **Atlas**, le suivi des projets et des tâches des équipes
+techniques, relié à Pegasus. Les ventes viennent de l'ERP.
+
+| Ce qu'on a inventé | Ce que ça remplace |
+|---|---|
+| `00_sources/crm/comptes_fictifs.csv` | un export de comptes depuis Pegasus |
+| `00_sources/crm/marques_comptes_fictif.csv` | le rattachement des marques aux comptes, dans Pegasus |
+| `00_sources/sap/ventes_fictives.csv` | un export de ventes depuis l'ERP |
+
+Brancher les vrais systèmes ne demande pas de réécrire la chaîne : on dépose l'export dans
+`00_sources/`, on écrit une règle d'ingestion dans `regles/`, et le reste ne bouge pas.
+Les colonnes attendues sont décrites dans ce README et dans `docs/contrat_api_v0.4.md`.
 
 ## Documentation
 

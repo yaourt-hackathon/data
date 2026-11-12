@@ -1,0 +1,59 @@
+allergene_id,nom_usuel,liste,type,motif_recherche,source,statut_verification
+A001,limonene,ancienne,substance,limonene,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A002,linalool,ancienne,substance,linalool,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A003,geraniol,ancienne,substance,geraniol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A004,citronellol,ancienne,substance,citronellol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A005,citral,ancienne,substance,citral,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A006,eugenol,ancienne,substance,eugenol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A007,isoeugenol,ancienne,substance,isoeugenol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A008,coumarin,ancienne,substance,coumarin,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A009,farnesol,ancienne,substance,farnesol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A010,benzyl alcohol,ancienne,substance,benzyl alcohol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A011,benzyl salicylate,ancienne,substance,benzyl salicylate,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A012,benzyl benzoate,ancienne,substance,benzyl benzoate,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A013,benzyl cinnamate,ancienne,substance,benzyl cinnamate,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A014,cinnamal,ancienne,substance,cinnamal,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A015,cinnamyl alcohol,ancienne,substance,cinnamyl alcohol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A016,amyl cinnamal,ancienne,substance,amyl cinnamal,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A017,amylcinnamyl alcohol,ancienne,substance,amylcinnamyl alcohol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A018,hexyl cinnamal,ancienne,substance,hexyl cinnamal,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A019,hydroxycitronellal,ancienne,substance,hydroxycitronellal,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A020,anise alcohol,ancienne,substance,anise alcohol,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A021,alpha-isomethyl ionone,ancienne,substance,alpha-isomethyl ionone,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A022,methyl 2-octynoate,ancienne,substance,methyl 2-octynoate,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A023,evernia prunastri,ancienne,substance,evernia prunastri,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A024,evernia furfuracea,ancienne,substance,evernia furfuracea,"Règlement (CE) 1223/2009, annexe III",a_verifier_eurlex
+A025,menthol,nouvelle,substance,menthol,Règlement (UE) 2023/1545,a_verifier_eurlex
+A026,camphor,nouvelle,substance,camphor,Règlement (UE) 2023/1545,a_verifier_eurlex
+A027,vanillin,nouvelle,substance,vanillin,Règlement (UE) 2023/1545,a_verifier_eurlex
+A028,linalyl acetate,nouvelle,substance,linalyl acetate,Règlement (UE) 2023/1545,a_verifier_eurlex
+A029,terpineol,nouvelle,substance,terpineol,Règlement (UE) 2023/1545,a_verifier_eurlex
+A030,pinene,nouvelle,substance,pinene,Règlement (UE) 2023/1545,a_verifier_eurlex
+A031,caryophyllene,nouvelle,substance,caryophyllene,Règlement (UE) 2023/1545,a_verifier_eurlex
+A032,carvone,nouvelle,substance,carvone,Règlement (UE) 2023/1545,a_verifier_eurlex
+A033,geranyl acetate,nouvelle,substance,geranyl acetate,Règlement (UE) 2023/1545,a_verifier_eurlex
+A034,benzaldehyde,nouvelle,substance,benzaldehyde,Règlement (UE) 2023/1545,a_verifier_eurlex
+A035,anethole,nouvelle,substance,anethole,Règlement (UE) 2023/1545,a_verifier_eurlex
+A036,methyl salicylate,nouvelle,substance,methyl salicylate,Règlement (UE) 2023/1545,a_verifier_eurlex
+A037,amyl salicylate,nouvelle,substance,amyl salicylate,Règlement (UE) 2023/1545,a_verifier_eurlex
+A038,terpinolene,nouvelle,substance,terpinolene,Règlement (UE) 2023/1545,a_verifier_eurlex
+A039,santalol,nouvelle,substance,santalol,Règlement (UE) 2023/1545,a_verifier_eurlex
+A040,sclareol,nouvelle,substance,sclareol,Règlement (UE) 2023/1545,a_verifier_eurlex
+A041,lavande,nouvelle,extrait_naturel,"lavandula (angustifolia|hybrida|intermedia|spica|latifolia)[^,;]{0,45}(oil|extract)",Règlement (UE) 2023/1545,a_verifier_eurlex
+A042,rose,nouvelle,extrait_naturel,"rosa (damascena|centifolia|alba|gallica|moschata|rubiginosa|canina)[^,;]{0,12}flower[^,;]{0,12}(oil|extract)",Règlement (UE) 2023/1545,a_verifier_eurlex
+A043,ylang-ylang,nouvelle,extrait_naturel,"cananga odorata[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,a_verifier_eurlex
+A044,bergamote,nouvelle,extrait_naturel,"citrus (aurantium )?bergamia[^,;]{0,40}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A045,citron,nouvelle,extrait_naturel,"citrus (medica )?limon(um)?[^,;]{0,25}(peel|fruit)?[^,;]{0,12}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A046,orange,nouvelle,extrait_naturel,"citrus (aurantium dulcis|sinensis|aurantium amara)[^,;]{0,40}(peel|flower|leaf)[^,;]{0,12}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A047,menthe,nouvelle,extrait_naturel,"mentha (piperita|viridis|spicata|arvensis)[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A048,eucalyptus,nouvelle,extrait_naturel,"eucalyptus globulus[^,;]{0,25}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A049,girofle,nouvelle,extrait_naturel,"eugenia caryophyllus[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A050,geranium,nouvelle,extrait_naturel,"pelargonium graveolens[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A051,patchouli,nouvelle,extrait_naturel,"pogostemon cablin[^,;]{0,25}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A052,jasmin,nouvelle,extrait_naturel,"jasminum (officinale|grandiflorum|sambac)[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,a_verifier_eurlex
+A053,santal,nouvelle,extrait_naturel,"santalum album[^,;]{0,25}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A054,cannelle,nouvelle,extrait_naturel,"cinnamomum (cassia|zeylanicum)[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A055,citronnelle,nouvelle,extrait_naturel,"cymbopogon (citratus|schoenanthus|flexuosus|nardus|winterianus)[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A056,cedre,nouvelle,extrait_naturel,"(cedrus atlantica|juniperus virginiana)[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A057,laurier,nouvelle,extrait_naturel,"laurus nobilis[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex
+A058,badiane,nouvelle,extrait_naturel,"illicium verum[^,;]{0,30}oil",Règlement (UE) 2023/1545,a_verifier_eurlex

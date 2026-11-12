@@ -1,0 +1,2 @@
+evenement_id,regle_id,nom_usuel,role,type,motif_recherche,source,reference,statut_verification,verifie_par
+EVT-002,R001,bergamote,direct,extrait_naturel,"citrus (aurantium )?bergamia[^,;]{0,40}oil",Événement d'essai (équipe Yaourt),,test,

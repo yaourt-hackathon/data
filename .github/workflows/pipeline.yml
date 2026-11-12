@@ -1,0 +1,78 @@
+# Recalcule toute la chaîne de données sans intervention.
+#  - une source, une règle ou un script arrive sur develop  -> pipeline + tests, puis les données recalculées sont enregistrées
+#  - chaque nuit                                            -> nouvelle collecte publique, enregistrée seulement si elle a changé
+#  - une demande de fusion vers develop                     -> pipeline + tests, sans rien enregistrer (simple vérification)
+# Si une étape, un contrôle ou un test échoue, rien n'est publié.
+name: Pipeline data
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - "data/00_sources/**"
+      - "regles/**"
+      - "src/**"
+      - "pipeline.py"
+      - "requirements*.txt"
+  pull_request:
+    branches: [develop]
+  schedule:
+    - cron: "17 3 * * *"   # 3 h 17 UTC, chaque nuit
+  workflow_dispatch:
+    inputs:
+      collecte:
+        description: "Refaire la collecte publique avant de recalculer"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Installer les librairies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Recalculer (avec collecte)
+        if: github.event_name == 'schedule' || inputs.collecte == true
+        run: python pipeline.py --collecte
+
+      - name: Recalculer
+        if: github.event_name != 'schedule' && inputs.collecte != true
+        run: python pipeline.py
+
+      - name: Tests
+        run: python -m pytest -q
+
+      - name: Enregistrer les données recalculées sur develop
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
+        run: |
+          # La nuit, on n'enregistre que si la collecte a produit un nouveau fichier bronze :
+          # sinon seules les dates de calcul changent, et l'historique se remplit pour rien.
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -z "$(git status --porcelain data/01_bronze/produits)" ]; then
+            echo "Collecte identique : rien à enregistrer."
+            exit 0
+          fi
+          git add data/01_bronze data/02_silver data/03_gold data/04_mart
+          if git diff --cached --quiet; then
+            echo "Aucune donnée n'a changé."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: recalcul automatique (${{ github.event_name }})"
+          git push

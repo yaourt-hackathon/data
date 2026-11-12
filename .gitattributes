@@ -1,0 +1,9 @@
+# Mêmes fins de ligne sur Mac, Windows et Linux : sinon Git voit des fichiers « modifiés » sans raison.
+* text=auto
+# Les CSV ne sont jamais convertis : certains textes d'ingrédients contiennent des retours à la ligne d'origine.
+*.csv -text
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.pdf binary

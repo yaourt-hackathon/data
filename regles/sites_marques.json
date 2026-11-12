@@ -1,0 +1,18 @@
+{
+  "source": "sites_marques",
+  "domaine": "produits",
+  "fichiers": "data/00_sources/sites_marques/*.csv",
+  "table_bronze": "data/01_bronze/produits/brz_msd_produits_sites.csv",
+  "separateur": ",",
+  "encodage": "utf-8",
+  "colonnes_obligatoires": ["marque", "nom", "ingredients", "url", "date_scrap"],
+  "mapping_silver": {
+    "code": "ean",
+    "marque": "marque",
+    "nom": "nom",
+    "ingredients": "ingredients",
+    "categories": "categorie",
+    "date_fiche": "date_scrap",
+    "url": "url"
+  }
+}

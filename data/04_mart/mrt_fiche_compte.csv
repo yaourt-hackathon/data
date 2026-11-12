@@ -1,0 +1,41 @@
+compte_id,evenement_id,code,marque,nom,niveau,elements_directs,elements_indices,type_rincage,date_fiche,confiance,reference_parfum
+CPT-001,EVT-001,3516170018624,florame,Eau De Toilette Verveine Pétillante Bio - 100 ML - Florame,probable,bergamote|citron|orange,limonene|linalool|geraniol|citronellol|citral|benzyl alcohol|benzyl benzoate|benzyl cinnamate,non_rince,2018-02-14,faible,PF-0102
+CPT-001,EVT-001,3516170018242,florame,Shampooing Brillance Intense aux huiles essentielles bio,probable,ylang-ylang|orange,,rince,2020-02-26,faible,PF-0101
+CPT-001,EVT-001,3516170012868,florame,Mousse de rasage aux huiles essentielles bio et à l'huile d'argan bio,probable,lavande,linalool|geraniol|benzyl alcohol,rince,2026-03-25,bonne,PF-0101
+CPT-001,EVT-001,3516170022751,florame,Crème mains de Provence Essence d'amande,probable,cedre,benzyl alcohol,non_rince,2016-05-15,faible,
+CPT-001,EVT-001,3516170024878,florame,Douche de Provence aux huiles essentielles bio Verveine-Citron,probable,citron,limonene|citral,rince,2018-02-20,faible,PF-0102
+CPT-001,EVT-002,3516170018624,florame,Eau De Toilette Verveine Pétillante Bio - 100 ML - Florame,probable,bergamote,,non_rince,2018-02-14,faible,PF-0102
+CPT-002,EVT-001,3283950914826,cattier,Masque Argile - Argile jaune Hamamélis,probable,menthe|geranium,citronellol|benzyl alcohol,rince,2016-05-16,faible,
+CPT-002,EVT-001,3283950040020,cattier,Dentargile Menthe - 75 ML - Cattier,probable,menthe,limonene|benzyl alcohol,rince,2026-03-25,bonne,
+CPT-002,EVT-001,3283950040051,cattier,Dentargile Citron - 75 ML - Cattier,probable,citron,limonene|citral|benzyl alcohol,rince,2026-03-25,bonne,
+CPT-002,EVT-001,3283950910903,cattier,masque argile,probable,menthe,benzyl alcohol,rince,2020-01-30,faible,
+CPT-002,EVT-001,3283950911054,cattier,Argimiel Savon doux végétal,probable,lavande,limonene|linalool|geraniol,rince,2016-05-28,faible,
+CPT-002,EVT-001,3283950914819,cattier,Masque Argile - Argile verte Menthe,probable,menthe,benzyl alcohol,rince,2016-10-09,faible,
+CPT-002,EVT-001,3283950910910,cattier,Masque Argile rose,possible,,benzyl alcohol,rince,2019-09-22,faible,
+CPT-002,EVT-001,3283950911078,cattier,Savon Cattier,possible,,limonene|linalool,rince,2018-05-12,faible,
+CPT-002,EVT-001,3283950911986,cattier,Beurre De Karité Parfum Miel Bio - 100 G - Cattier,possible,,limonene|linalool,non_rince,2020-01-26,faible,
+CPT-002,EVT-001,3283950916776,cattier,Crème mains Argile blanche Fleur d'impératoire,possible,,limonene|linalool|geraniol|benzyl alcohol,non_rince,2016-05-15,faible,
+CPT-003,EVT-001,3284410028411,melvita,Eau extraordinaire Rose,probable,rose,limonene|linalool|geraniol|citronellol|citral|eugenol,indetermine,2017-01-11,faible,PF-0103
+CPT-003,EVT-001,3284410031022,melvita,Savon crème écorce d'orange - karité – orange – petit grain,probable,orange,limonene|linalool|geraniol,rince,2016-05-19,faible,PF-0104
+CPT-003,EVT-001,3284410037734,melvita,Nectar de roses Gel frais contour des yeux poches et cernes,probable,rose,,indetermine,2020-03-17,faible,PF-0103
+CPT-003,EVT-001,3284410002008,melvita,Les Solyflores - eau de toilette Musc - Gigembre,possible,,limonene|linalool|geraniol|citronellol|citral|eugenol|coumarin,non_rince,2018-02-15,faible,
+CPT-003,EVT-001,3284410031015,melvita,Savon crème feuilles de verveine - karité,possible,,limonene|linalool|geraniol|citronellol|citral,rince,2016-05-19,faible,
+CPT-003,EVT-001,3284410032739,melvita,Stick levres nourissant - Huile d'Argan,possible,,limonene,non_rince,2020-07-08,faible,PF-0105
+CPT-003,EVT-001,3284410036607,melvita,Nectar de miel,possible,,limonene,indetermine,2026-03-25,bonne,PF-0104
+CPT-003,EVT-001,3284410038014,melvita,L'or bio douche extraordinaire,possible,,limonene|linalool|geraniol|citronellol|benzyl salicylate,rince,2026-03-25,bonne,PF-0105
+CPT-004,EVT-001,3478821003680,so-bio-etic,Précieux argan Huile de bain et massage,probable,camphor|rose|ylang-ylang|bergamote,limonene|linalool|geraniol|citral|farnesol|benzyl salicylate|benzyl benzoate|anise alcohol,rince,2026-03-25,bonne,
+CPT-004,EVT-001,3517360009552,so-bio-etic,Shampooing Douche Verveine Citron Bio,probable,citron,limonene|linalool|citral|benzyl alcohol,rince,2018-07-09,faible,
+CPT-004,EVT-001,3478820303453,so-bio-etic,Précieux argan Soin sublimateur,possible,,limonene|linalool|geraniol|benzyl salicylate|cinnamal|amyl cinnamal|anise alcohol,non_rince,2016-05-23,faible,
+CPT-004,EVT-001,3517360002430,so-bio-etic,Douche Lait d'ânesse Douche et bain lacté,possible,,limonene|linalool|citronellol,rince,2016-05-23,faible,
+CPT-004,EVT-001,3517360002485,so-bio-etic,Douche nourrissante Vanille de Tahiti,possible,,linalool,rince,2016-05-23,faible,
+CPT-004,EVT-001,3517360002577,so-bio-etic,Douche & Bain parfum Cola,possible,,limonene,rince,2019-07-13,faible,
+CPT-004,EVT-001,3517360005134,so-bio-etic,Shampooing doux Lait d'ânesse et d'amande,possible,,linalool|benzyl alcohol,rince,2017-11-12,faible,
+CPT-004,EVT-001,3517360005998,so-bio-etic,BB cream texture légère perfecteur de teint - 01 beige nude,possible,,limonene|benzyl alcohol|benzyl salicylate,indetermine,2019-03-29,faible,
+CPT-004,EVT-001,3517360006162,so-bio-etic,BB Cream Mon lait d'Ânesse  SPF 10 - 01 beige lumière,possible,,linalool|benzyl alcohol|benzyl salicylate,non_rince,2019-03-29,faible,
+CPT-004,EVT-001,3517360006261,so-bio-etic,Douche au lait de jument Crème de douche nourrissante,possible,,benzyl alcohol,rince,2016-05-23,faible,
+CPT-004,EVT-001,3517360008685,so-bio-etic,Précieux Argan Eau micellaire anti-âge,possible,,linalool|geraniol|benzyl alcohol,indetermine,2026-05-10,bonne,
+CPT-004,EVT-001,3517360010558,so-bio-etic,Concentré éclat Anti-tâche Fleur D'immortelle,possible,,benzyl alcohol,indetermine,2019-05-08,faible,
+CPT-004,EVT-001,3517360012774,so-bio-etic,Douche crème lait d'ânesse,possible,,limonene|linalool|citronellol|benzyl alcohol,rince,2026-03-25,bonne,
+CPT-004,EVT-001,3517360014181,so-bio-etic,Shampooing cheveux doux lait d'amande,possible,,linalool|benzyl alcohol,rince,2026-03-25,bonne,
+CPT-004,EVT-001,3517360025170,so-bio-etic,Shampoings & après-shampoing,possible,,limonene|linalool|citronellol,rince,2025-10-11,bonne,
+CPT-004,EVT-002,3478821003680,so-bio-etic,Précieux argan Huile de bain et massage,probable,bergamote,,rince,2026-03-25,bonne,

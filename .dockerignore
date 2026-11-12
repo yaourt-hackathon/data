@@ -1,0 +1,14 @@
+# Seuls requirements.txt, src/ et data/03_gold, data/04_mart entrent dans l'image
+.git
+.github
+.venv
+**/__pycache__
+.env
+*.env
+data/00_sources
+data/01_bronze
+data/02_silver
+notebooks
+tests
+docs
+*.pdf

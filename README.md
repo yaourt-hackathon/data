@@ -19,6 +19,13 @@ python -m pytest -q                  # les tests
 uvicorn src.api:app --reload         # l'API, documentation sur http://127.0.0.1:8000/docs
 ```
 
+L'API en conteneur, comme la lance le `compose.yaml` de l'application :
+
+```bash
+docker build -t data-api .
+docker run --rm -p 8000:8000 data-api   # lit data/03_gold et data/04_mart tels que versionnés
+```
+
 ## La chaîne
 
 ```

@@ -113,3 +113,19 @@ def test_api_fiche_compte_porte_de_quoi_preparer_un_rendez_vous(client):
     assert bloc["nb_possible"] == premier["nb_possible"]
     assert bloc["confiance"] == premier["confiance"]
     assert bloc["origine_textes"] in ("gabarit", "llm_valide")
+
+
+def test_un_produit_vu_plusieurs_fois_garde_la_capture_la_plus_recente():
+    """Trois mois de scraping : le même code-barres revient à plusieurs dates."""
+    import pandas as pd
+    from detection import garder_la_plus_recente
+    produits = pd.DataFrame({
+        "code": ["3001", "3001", "3002"],
+        "nom": ["Gel douche", "Gel douche", "Shampooing"],
+        "ingredients": ["ancienne formule", "nouvelle formule", "autre"],
+        "date_extraction": ["2026-09-01", "2026-11-12", "2026-10-01"],
+        "date_fiche": ["2026-08-20", "2026-11-02", "2026-09-15"],
+    })
+    garde = garder_la_plus_recente(produits)
+    assert len(garde) == 2
+    assert garde[garde["code"] == "3001"]["ingredients"].iloc[0] == "nouvelle formule"

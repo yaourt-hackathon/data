@@ -140,6 +140,7 @@ class ProduitTouche(BaseModel):
     type_rincage: Rincage
     date_fiche: str
     reference_parfum: str = Field(..., description="Référence fictive du parfum vendu pour ce produit, vide sinon")
+    ingredients: str = Field("", description="L'étiquette telle qu'elle est publiée. Y surligner les elements_directs montre ce que le code a lu")
 
 
 class EvenementCompte(BaseModel):
@@ -329,7 +330,8 @@ def compte(compte_id: str):
                       "produits": [{"code_barre": p["code"], "marque": p["marque"], "nom": p["nom"], "niveau": p["niveau"],
                                     "elements_directs": liste(p["elements_directs"]),
                                     "elements_indices": liste(p["elements_indices"]), "type_rincage": p["type_rincage"],
-                                    "date_fiche": str(p["date_fiche"]), "reference_parfum": p["reference_parfum"]}
+                                    "date_fiche": str(p["date_fiche"]), "reference_parfum": p["reference_parfum"],
+                                    "ingredients": p.get("ingredients", "")}
                                    for _, p in produits.iterrows()]})
     return {"date_maj": date_maj(appels), "crm_fictif": True, "compte_id": c["compte_id"], "nom_compte": c["nom_compte"],
             "statut": c["statut"], "pays": c["pays"], "segment": c["segment"], "commercial": c["commercial"],

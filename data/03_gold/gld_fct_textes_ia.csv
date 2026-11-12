@@ -10,3 +10,23 @@ EVT-002,CPT-001,fait,"1 de vos 6 produits analysés est en exposition probable, 
 EVT-002,CPT-001,question,Souhaitez-vous étudier une alternative à la bergamote pour vos prochains lancements ?,llm,llama3.2:3b,2026-11-12,valide,JM
 EVT-002,CPT-004,fait,"1 de vos 22 produits analysés est en exposition probable, concernant l'huile essentielle de bergamote.",llm,llama3.2:3b,2026-11-12,valide,JM
 EVT-002,CPT-004,question,Souhaitez-vous étudier une alternative à la bergamote pour vos prochains lancements ?,llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-008,fait,"4 de vos 15 produits analysés sont en exposition probable, avec des ingrédients visés : cedre, eucalyptus, menthe, menthol, vanillin. 7 autres sont en exposition possible.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-008,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-012,fait,"2 de vos 26 produits analysés sont en exposition probable, et 15 autres sont en exposition possible. Les ingrédients visés repérés sur les étiquettes sont laurier et rose.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-012,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-005,fait,2 de vos 11 produits analysés sont en exposition probable et listent un ingrédient visé : menthol. 3 autres sont en exposition possible.,llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-005,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-015,fait,1 de vos 8 produits analysés est en exposition probable et contient le ingrédient vanillin. 1 autre est en exposition possible.,llm,llama3.2:3b,2026-11-12,rejete,JM
+EVT-001,CPT-015,question,"Pour ce produit, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-013,fait,"4 de vos 6 produits analysés sont en exposition probable et listent un ingrédient visé : cannelle, cedre, citron, geranium, lavande, orange, ylang-ylang. Aucun produit n'est en exposition possible.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-013,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-010,fait,"3 de vos 16 produits analysés sont en exposition probable, et 8 autres sont en exposition possible. Les ingrédients visés repérés sur les étiquettes sont cedre, linalyl acetate, menthe, vanillin et ylang-ylang.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-010,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-007,fait,"3 de vos 7 produits analysés sont en exposition probable et listent un ingrédient visé : citron, lavande, orange. Aucun produit n'est en exposition possible.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-007,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-009,fait,2 de vos 13 produits analysés sont en exposition probable et listent un ingrédient visé : lavande. 6 autres sont en exposition possible.,llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-009,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-011,fait,"1 de vos 2 produits analysés est en exposition probable et contient linalyl acetate, vanillin. Aucun autre produit n'est en exposition possible.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-011,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-014,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-006,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM

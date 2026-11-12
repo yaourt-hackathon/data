@@ -1,5 +1,5 @@
 marque,nb_produits,nb_probable,nb_possible,nb_indetermine,nb_non_detecte,part_probable,urgence,date_calcul
-cattier,19,6,4,1,8,0.32,haute,2026-11-10
-florame,6,5,0,0,1,0.83,haute,2026-11-10
-melvita,14,3,5,2,4,0.21,moyenne,2026-11-10
-so-bio-etic,22,2,13,2,5,0.09,moyenne,2026-11-10
+cattier,19,6,4,1,8,0.32,haute,2026-11-12
+florame,6,5,0,0,1,0.83,haute,2026-11-12
+melvita,14,3,5,2,4,0.21,moyenne,2026-11-12
+so-bio-etic,22,2,13,2,5,0.09,moyenne,2026-11-12

@@ -67,13 +67,34 @@ Les comptes, leur statut client ou prospect, les commerciaux (`KAM-01`…) et le
 pour la démonstration et marqués `fictif`. Ils ne disent rien de la relation réelle entre ces marques et Givaudan.
 Aucun nom de personne, nulle part.
 
+## Documentation
+
+`docs/contrat_api_v0.4.md` : les routes, les champs et ce qu'ils veulent dire côté application.
+`docs/benchmark_llm.pdf` : la comparaison des modèles locaux (la version qui fait foi est à la racine du fork `example-rag`).
+
 ## API (v0.4.0)
 
 `/health`, `/marques`, `/exposition?marque=` (inchangées), `/evenements`, `/evenements/{evenement_id}/appels`,
 `/comptes/{compte_id}`. On ajoute, on ne renomme ni ne retire rien : l'application génère son client à partir de `/openapi.json`.
 
-Quand `data/03_gold/gld_fct_textes_ia.csv` existera, l'API affichera les textes du LLM marqués `valide`
-à la place des gabarits écrits par le code.
+L'API affiche les textes du LLM marqués `valide` dans `data/03_gold/gld_fct_textes_ia.csv`,
+et garde le gabarit écrit par le code pour les autres (champ `origine_textes`).
+
+## Textes du LLM local
+
+```bash
+ollama pull llama3.2:3b                 # une seule fois
+python src/textes_ia.py --limite 2      # essayer sur deux comptes
+python src/textes_ia.py                 # tout ce qui manque
+```
+
+Le LLM reçoit des faits déjà calculés et les met en phrases. Chaque texte passe trois contrôles :
+aucun chiffre absent des faits, pas de « non conforme », « illégal » ni « interdit », moins de 400 caractères.
+Un texte refusé n'est pas enregistré : le gabarit reste.
+
+Ce script n'est pas dans `pipeline.py` : le LLM tourne en local, par lot, quand on le décide.
+Après génération, chaque ligne est à `a_relire`. Une personne met `valide` ou `rejete` et ses initiales
+dans `relu_par`. Une ligne déjà décidée n'est jamais réécrite.
 
 ## Automatisation
 

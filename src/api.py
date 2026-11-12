@@ -113,7 +113,8 @@ class Appel(BaseModel):
     raison_classement: str = Field(..., description="Phrase écrite par le code à partir des nombres")
     fait: str = Field(..., description="Le fait à dire au client, avec sa source")
     question: str = Field(..., description="La question à poser")
-    origine_textes: Literal["gabarit", "llm_valide"] = Field(..., description="gabarit : écrit par le code. llm_valide : écrit par le LLM local et relu par une personne")
+    arguments: str = Field("", description="Arguments rédigés par le LLM local et relus. Vide tant qu'aucun n'est validé")
+    origine_textes: Literal["gabarit", "llm_valide"] = Field(..., description="Origine du champ « fait ». gabarit : écrit par le code. llm_valide : écrit par le LLM local et relu par une personne. La question peut avoir une autre origine")
     nb_produits_analyses: int
     nb_probable: int
     nb_possible: int
@@ -262,7 +263,8 @@ def appel_json(a, textes):
     return {"rang": int(a["rang"]), "compte_id": a["compte_id"], "nom_compte": a["nom_compte"], "statut": a["statut"],
             "score": int(a["score"]), "raison_classement": a["raison_classement"],
             "fait": fait or a["fait"], "question": question or a["question"],
-            "origine_textes": "llm_valide" if fait or question else "gabarit",
+            "arguments": textes.get(cle + ("arguments",), ""),
+            "origine_textes": "llm_valide" if fait else "gabarit",
             "nb_produits_analyses": int(a["nb_produits_analyses"]), "nb_probable": int(a["nb_probable"]),
             "nb_possible": int(a["nb_possible"]), "part_probable": float(a["part_probable"]), "confiance": a["confiance"]}
 

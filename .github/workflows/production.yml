@@ -26,7 +26,7 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
-      # Version épinglée, comme les actions
+      # Version exacte, pour un déploiement reproductible
       - run: npm install --global @railway/cli@5.71.0
       # Railway construit le Dockerfile, puis attend /health ; un échec fait
       # échouer le job et laisse l'ancienne version en ligne

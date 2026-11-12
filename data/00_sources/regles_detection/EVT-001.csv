@@ -1,59 +1,79 @@
 evenement_id,regle_id,nom_usuel,role,type,motif_recherche,source,reference,statut_verification,verifie_par
-EVT-001,R001,limonene,indice,substance,limonene,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R002,linalool,indice,substance,linalool,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R003,geraniol,indice,substance,geraniol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R004,citronellol,indice,substance,citronellol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R005,citral,indice,substance,citral,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R006,eugenol,indice,substance,eugenol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R007,isoeugenol,indice,substance,isoeugenol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R008,coumarin,indice,substance,coumarin,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R009,farnesol,indice,substance,farnesol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R010,benzyl alcohol,indice,substance,benzyl alcohol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R011,benzyl salicylate,indice,substance,benzyl salicylate,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R012,benzyl benzoate,indice,substance,benzyl benzoate,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R013,benzyl cinnamate,indice,substance,benzyl cinnamate,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R014,cinnamal,indice,substance,cinnamal,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R015,cinnamyl alcohol,indice,substance,cinnamyl alcohol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R016,amyl cinnamal,indice,substance,amyl cinnamal,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R017,amylcinnamyl alcohol,indice,substance,amylcinnamyl alcohol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R018,hexyl cinnamal,indice,substance,hexyl cinnamal,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R019,hydroxycitronellal,indice,substance,hydroxycitronellal,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R020,anise alcohol,indice,substance,anise alcohol,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R021,alpha-isomethyl ionone,indice,substance,alpha-isomethyl ionone,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R022,methyl 2-octynoate,indice,substance,methyl 2-octynoate,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R023,evernia prunastri,indice,substance,evernia prunastri,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R024,evernia furfuracea,indice,substance,evernia furfuracea,"Règlement (CE) 1223/2009, annexe III",,a_verifier_eurlex,
-EVT-001,R025,menthol,direct,substance,menthol,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R026,camphor,direct,substance,camphor,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R027,vanillin,direct,substance,vanillin,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R028,linalyl acetate,direct,substance,linalyl acetate,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R029,terpineol,direct,substance,terpineol,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R030,pinene,direct,substance,pinene,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R031,caryophyllene,direct,substance,caryophyllene,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R032,carvone,direct,substance,carvone,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R033,geranyl acetate,direct,substance,geranyl acetate,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R034,benzaldehyde,direct,substance,benzaldehyde,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R035,anethole,direct,substance,anethole,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R036,methyl salicylate,direct,substance,methyl salicylate,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R037,amyl salicylate,direct,substance,amyl salicylate,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R038,terpinolene,direct,substance,terpinolene,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R039,santalol,direct,substance,santalol,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R040,sclareol,direct,substance,sclareol,Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R041,lavande,direct,extrait_naturel,"lavandula (angustifolia|hybrida|intermedia|spica|latifolia)[^,;]{0,45}(oil|extract)",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R042,rose,direct,extrait_naturel,"rosa (damascena|centifolia|alba|gallica|moschata|rubiginosa|canina)[^,;]{0,12}flower[^,;]{0,12}(oil|extract)",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R043,ylang-ylang,direct,extrait_naturel,"cananga odorata[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R044,bergamote,direct,extrait_naturel,"citrus (aurantium )?bergamia[^,;]{0,40}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R045,citron,direct,extrait_naturel,"citrus (medica )?limon(um)?[^,;]{0,25}(peel|fruit)?[^,;]{0,12}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R046,orange,direct,extrait_naturel,"citrus (aurantium dulcis|sinensis|aurantium amara)[^,;]{0,40}(peel|flower|leaf)[^,;]{0,12}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R047,menthe,direct,extrait_naturel,"mentha (piperita|viridis|spicata|arvensis)[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R048,eucalyptus,direct,extrait_naturel,"eucalyptus globulus[^,;]{0,25}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R049,girofle,direct,extrait_naturel,"eugenia caryophyllus[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R050,geranium,direct,extrait_naturel,"pelargonium graveolens[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R051,patchouli,direct,extrait_naturel,"pogostemon cablin[^,;]{0,25}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R052,jasmin,direct,extrait_naturel,"jasminum (officinale|grandiflorum|sambac)[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R053,santal,direct,extrait_naturel,"santalum album[^,;]{0,25}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R054,cannelle,direct,extrait_naturel,"cinnamomum (cassia|zeylanicum)[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R055,citronnelle,direct,extrait_naturel,"cymbopogon (citratus|schoenanthus|flexuosus|nardus|winterianus)[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R056,cedre,direct,extrait_naturel,"(cedrus atlantica|juniperus virginiana)[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R057,laurier,direct,extrait_naturel,"laurus nobilis[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
-EVT-001,R058,badiane,direct,extrait_naturel,"illicium verum[^,;]{0,30}oil",Règlement (UE) 2023/1545,,a_verifier_eurlex,
+EVT-001,R001,limonene,indice,substance,limonene,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 88,verifie,Abdo
+EVT-001,R002,linalool,indice,substance,linalool,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 84,verifie,Abdo
+EVT-001,R003,geraniol,indice,substance,geraniol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 78,verifie,Abdo
+EVT-001,R004,citronellol,indice,substance,citronellol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 86,verifie,Abdo
+EVT-001,R005,citral,indice,substance,citral,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 70,verifie,Abdo
+EVT-001,R006,eugenol,indice,substance,eugenol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 71,verifie,Abdo
+EVT-001,R007,isoeugenol,indice,substance,isoeugenol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 73,verifie,Abdo
+EVT-001,R008,coumarin,indice,substance,coumarin,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 77,verifie,Abdo
+EVT-001,R009,farnesol,indice,substance,farnesol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 82,verifie,Abdo
+EVT-001,R010,benzyl alcohol,indice,substance,benzyl alcohol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 45,verifie,Abdo
+EVT-001,R011,benzyl salicylate,indice,substance,benzyl salicylate,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 75,verifie,Abdo
+EVT-001,R012,benzyl benzoate,indice,substance,benzyl benzoate,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 85,verifie,Abdo
+EVT-001,R013,benzyl cinnamate,indice,substance,benzyl cinnamate,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 81,verifie,Abdo
+EVT-001,R014,cinnamal,indice,substance,cinnamal,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 76,verifie,Abdo
+EVT-001,R015,cinnamyl alcohol,indice,substance,cinnamyl alcohol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 69,verifie,Abdo
+EVT-001,R016,amyl cinnamal,indice,substance,amyl cinnamal,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 67,verifie,Abdo
+EVT-001,R017,amylcinnamyl alcohol,indice,substance,amylcinnamyl alcohol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 74,verifie,Abdo
+EVT-001,R018,hexyl cinnamal,indice,substance,hexyl cinnamal,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 87,verifie,Abdo
+EVT-001,R019,hydroxycitronellal,indice,substance,hydroxycitronellal,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 72,verifie,Abdo
+EVT-001,R020,anise alcohol,indice,substance,anise alcohol,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 80,verifie,Abdo
+EVT-001,R021,alpha-isomethyl ionone,indice,substance,alpha-isomethyl ionone,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 90,verifie,Abdo
+EVT-001,R022,methyl 2-octynoate,indice,substance,methyl 2-octynoate,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 89,verifie,Abdo
+EVT-001,R023,evernia prunastri,indice,substance,evernia prunastri,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 91,verifie,Abdo
+EVT-001,R024,evernia furfuracea,indice,substance,evernia furfuracea,"Règlement (CE) 1223/2009, annexe III",annexe III ligne 92,verifie,Abdo
+EVT-001,R025,menthol,direct,substance,menthol,Règlement (UE) 2023/1545,annexe III ligne 338,verifie,Abdo
+EVT-001,R026,camphor,direct,substance,camphor,Règlement (UE) 2023/1545,annexe III ligne 331,verifie,Abdo
+EVT-001,R027,vanillin,direct,substance,vanillin,Règlement (UE) 2023/1545,annexe III ligne 346,verifie,Abdo
+EVT-001,R028,linalyl acetate,direct,substance,linalyl acetate,Règlement (UE) 2023/1545,annexe III ligne 337,verifie,Abdo
+EVT-001,R029,terpineol,direct,substance,terpineol,Règlement (UE) 2023/1545,annexe III ligne 343,verifie,Abdo
+EVT-001,R030,pinene,direct,substance,pinene,Règlement (UE) 2023/1545,annexe III ligne 371,verifie,Abdo
+EVT-001,R031,caryophyllene,direct,substance,caryophyllene,Règlement (UE) 2023/1545,annexe III ligne 332,verifie,Abdo
+EVT-001,R032,carvone,direct,substance,carvone,Règlement (UE) 2023/1545,annexe III ligne 333,verifie,Abdo
+EVT-001,R033,geranyl acetate,direct,substance,geranyl acetate,Règlement (UE) 2023/1545,annexe III ligne 369,verifie,Abdo
+EVT-001,R034,benzaldehyde,direct,substance,benzaldehyde,Règlement (UE) 2023/1545,annexe III ligne 330,verifie,Abdo
+EVT-001,R035,anethole,direct,substance,anethole,Règlement (UE) 2023/1545,annexe III ligne 329,verifie,Abdo
+EVT-001,R036,methyl salicylate,direct,substance,methyl salicylate,Règlement (UE) 2023/1545,annexe III ligne 324,verifie,Abdo
+EVT-001,R037,amyl salicylate,direct,substance,amyl salicylate,Règlement (UE) 2023/1545,annexe III ligne 328,verifie,Abdo
+EVT-001,R038,terpinolene,direct,substance,terpinolene,Règlement (UE) 2023/1545,annexe III ligne 133,verifie,Abdo
+EVT-001,R039,santalol,direct,substance,santalol,Règlement (UE) 2023/1545,annexe III ligne 341,verifie,Abdo
+EVT-001,R040,sclareol,direct,substance,sclareol,Règlement (UE) 2023/1545,annexe III ligne 342,verifie,Abdo
+EVT-001,R041,lavande,direct,extrait_naturel,"lavandula (angustifolia|hybrida|intermedia|spica|latifolia)[^,;]{0,45}(oil|extract)",Règlement (UE) 2023/1545,annexe III ligne 360,verifie,Abdo
+EVT-001,R042,rose,direct,extrait_naturel,"rosa (damascena|centifolia|alba|gallica|moschata|rubiginosa|canina)[^,;]{0,12}flower[^,;]{0,12}(oil|extract)",Règlement (UE) 2023/1545,annexe III ligne 366,verifie,Abdo
+EVT-001,R043,ylang-ylang,direct,extrait_naturel,"cananga odorata[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,annexe III ligne 347,verifie,Abdo
+EVT-001,R044,bergamote,direct,extrait_naturel,"citrus (aurantium )?bergamia[^,;]{0,40}oil",Règlement (UE) 2023/1545,annexe III ligne 352,verifie,Abdo
+EVT-001,R045,citron,direct,extrait_naturel,"citrus (medica )?limon(um)?[^,;]{0,25}(peel|fruit)?[^,;]{0,12}oil",Règlement (UE) 2023/1545,annexe III ligne 353,verifie,Abdo
+EVT-001,R046,orange,direct,extrait_naturel,"citrus (aurantium dulcis|sinensis|aurantium amara)[^,;]{0,40}(peel|flower|leaf)[^,;]{0,12}oil",Règlement (UE) 2023/1545,annexe III ligne 350 et 351,verifie,Abdo
+EVT-001,R047,menthe,direct,extrait_naturel,"mentha (piperita|viridis|spicata|arvensis)[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 361 et 362,verifie,Abdo
+EVT-001,R048,eucalyptus,direct,extrait_naturel,"eucalyptus globulus[^,;]{0,25}oil",Règlement (UE) 2023/1545,annexe III ligne 355,verifie,Abdo
+EVT-001,R049,girofle,direct,extrait_naturel,"eugenia caryophyllus[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 356,verifie,Abdo
+EVT-001,R050,geranium,direct,extrait_naturel,"pelargonium graveolens[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 364,verifie,Abdo
+EVT-001,R051,patchouli,direct,extrait_naturel,"pogostemon cablin[^,;]{0,25}oil",Règlement (UE) 2023/1545,annexe III ligne 365,verifie,Abdo
+EVT-001,R052,jasmin,direct,extrait_naturel,"jasminum (officinale|grandiflorum|sambac)[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,annexe III ligne 357,verifie,Abdo
+EVT-001,R053,santal,direct,extrait_naturel,"santalum album[^,;]{0,25}oil",Règlement (UE) 2023/1545,annexe III ligne 367,verifie,Abdo
+EVT-001,R054,cannelle,direct,extrait_naturel,"cinnamomum (cassia|zeylanicum)[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 348 et 349,verifie,Abdo
+EVT-001,R055,citronnelle,direct,extrait_naturel,"cymbopogon (citratus|schoenanthus|flexuosus|nardus|winterianus)[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 354,verifie,Abdo
+EVT-001,R056,cedre,direct,extrait_naturel,"(cedrus atlantica|juniperus virginiana)[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 358 et 122,verifie,Abdo
+EVT-001,R057,laurier,direct,extrait_naturel,"laurus nobilis[^,;]{0,30}oil",Règlement (UE) 2023/1545,annexe III ligne 359,verifie,Abdo
+EVT-001,R058,badiane,direct,extrait_naturel,"illicium verum[^,;]{0,30}oil",Règlement (UE) 2023/1545,,introuvable,Abdo
+EVT-001,R059,acetyl cedrene,direct,substance,acetyl cedrene,Règlement (UE) 2023/1545,annexe III ligne 327,verifie,Abdo
+EVT-001,R060,dimethyl phenethyl acetate,direct,substance,dimethyl phenethyl acetate,Règlement (UE) 2023/1545,annexe III ligne 334,verifie,Abdo
+EVT-001,R061,hexadecanolactone,direct,substance,hexadecanolactone,Règlement (UE) 2023/1545,annexe III ligne 335,verifie,Abdo
+EVT-001,R062,hexamethylindanopyran,direct,substance,hexamethylindanopyran,Règlement (UE) 2023/1545,annexe III ligne 336,verifie,Abdo
+EVT-001,R063,trimethylcyclopentenyl methylisopentenol,direct,substance,trimethylcyclopentenyl methylisopentenol,Règlement (UE) 2023/1545,annexe III ligne 339,verifie,Abdo
+EVT-001,R064,salicylaldehyde,direct,substance,salicylaldehyde,Règlement (UE) 2023/1545,annexe III ligne 340,verifie,Abdo
+EVT-001,R065,tetramethyl acetyloctahydronaphthalenes,direct,substance,tetramethyl acetyloctahydronaphthalenes,Règlement (UE) 2023/1545,annexe III ligne 344,verifie,Abdo
+EVT-001,R066,trimethylbenzenepropanol,direct,substance,trimethylbenzenepropanol,Règlement (UE) 2023/1545,annexe III ligne 345,verifie,Abdo
+EVT-001,R067,eugenyl acetate,direct,substance,eugenyl acetate,Règlement (UE) 2023/1545,annexe III ligne 368,verifie,Abdo
+EVT-001,R068,isoeugenyl acetate,direct,substance,isoeugenyl acetate,Règlement (UE) 2023/1545,annexe III ligne 370,verifie,Abdo
+EVT-001,R069,6-methyl coumarin,direct,substance,6-methyl coumarin,Règlement (UE) 2023/1545,annexe III ligne 46,verifie,Abdo
+EVT-001,R070,alpha-terpinene,direct,substance,alpha-terpinene,Règlement (UE) 2023/1545,annexe III ligne 131,verifie,Abdo
+EVT-001,R071,alpha-damascone,direct,substance,alpha-damascone,Règlement (UE) 2023/1545,annexe III ligne 157,verifie,Abdo
+EVT-001,R072,3-propylidenephthalide,direct,substance,3-propylidenephthalide,Règlement (UE) 2023/1545,annexe III ligne 175,verifie,Abdo
+EVT-001,R073,narcisse,direct,extrait_naturel,"narcissus (poeticus|pseudonarcissus|jonquilla|tazetta)[^,;]{0,30}extract",Règlement (UE) 2023/1545,annexe III ligne 363,verifie,Abdo
+EVT-001,R074,pin mugo,direct,extrait_naturel,"pinus mugo[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,annexe III ligne 109,verifie,Abdo
+EVT-001,R075,pin pumila,direct,extrait_naturel,"pinus pumila[^,;]{0,30}(oil|extract)",Règlement (UE) 2023/1545,annexe III ligne 114,verifie,Abdo
+EVT-001,R076,terebenthine,direct,extrait_naturel,turpentine,Règlement (UE) 2023/1545,annexe III ligne 124,verifie,Abdo
+EVT-001,R077,baume du perou,direct,extrait_naturel,"myroxylon (balsamum )?pereirae[^,;]{0,30}(oil|extract|resin|balsam)",Règlement (UE) 2023/1545,annexe III ligne 154,verifie,Abdo
+EVT-001,R078,verveine,direct,extrait_naturel,lippia citriodora absolute,Règlement (UE) 2023/1545,annexe III ligne 196,verifie,Abdo

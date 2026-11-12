@@ -1,0 +1,12 @@
+evenement_id,compte_id,type_texte,texte,origine,modele,date_generation,statut_validation,relu_par
+EVT-001,CPT-001,fait,"5 de vos 6 produits analysés sont en exposition probable et listent un ingrédient visé : bergamote, cedre, citron, lavande, orange, ylang-ylang. Aucun produit n'est en exposition possible.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-001,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-003,fait,"3 de vos 14 produits analysés sont en exposition probable, et 5 autres sont en exposition possible. Les ingrédients visés repérés sur les étiquettes sont orange et rose.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-003,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-002,fait,"6 de vos 19 produits analysés sont en exposition probable et listent un ingrédient visé : citron, geranium, lavande, menthe. 4 autres sont en exposition possible.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-002,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-001,CPT-004,question,"Pour ces produits, préférez-vous compléter l'étiquette ou revoir le parfum ?",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-002,CPT-001,fait,"1 de vos 6 produits analysés est en exposition probable, concernant l'huile essentielle de bergamote.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-002,CPT-001,question,Souhaitez-vous étudier une alternative à la bergamote pour vos prochains lancements ?,llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-002,CPT-004,fait,"1 de vos 22 produits analysés est en exposition probable, concernant l'huile essentielle de bergamote.",llm,llama3.2:3b,2026-11-12,valide,JM
+EVT-002,CPT-004,question,Souhaitez-vous étudier une alternative à la bergamote pour vos prochains lancements ?,llm,llama3.2:3b,2026-11-12,valide,JM

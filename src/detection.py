@@ -10,7 +10,7 @@ import re
 
 import pandas as pd
 
-from commun import AUJOURDHUI, GOLD, MART, SILVER, ecrire, lire, normaliser
+from commun import AUJOURDHUI, GOLD, MART, SILVER, ecrire, lire, normaliser, slug
 
 PRODUITS = SILVER / "produits"
 NIVEAUX = ["probable", "possible", "indetermine", "non_detecte"]
@@ -19,11 +19,33 @@ COLONNES = ["evenement_id", "code", "marque", "nom", "type_rincage", "niveau", "
             "elements_indices", "nb_indices", "contient_parfum", "motif", "date_fiche", "confiance", "source"]
 
 
+def cle_produit(ligne):
+    """Clé de rapprochement entre sources : la marque et le nom, sans accent ni ponctuation.
+
+    Toutes les sources n'ont pas de code-barres (Cosmébio n'en publie pas). Sans ça, le même
+    produit vu par deux sources compterait deux fois et fausserait le classement des comptes.
+    """
+    return slug(ligne["marque"]) + "::" + slug(ligne["nom"])
+
+
 def lire_produits():
-    """Tous les silver produits (collecte publique + fichiers de sites), sans les rejets."""
+    """Tous les silver produits (collecte publique + fichiers de sites), sans les rejets ni les doublons."""
     fichiers = [f for f in sorted(PRODUITS.glob("slv_msd_produits*.csv")) if not f.stem.endswith("_rejets")]
     produits = pd.concat([lire(f) for f in fichiers], ignore_index=True)
-    return produits.drop_duplicates(subset="code", keep="first")
+    avant = len(produits)
+    produits = produits.drop_duplicates(subset="code", keep="first")
+
+    # Même produit vu par deux sources : on garde la ligne qui a un vrai code-barres.
+    produits["_cle"] = produits.apply(cle_produit, axis=1)
+    produits["_sans_ean"] = produits["code"].str.startswith("URL-")
+    produits = produits.sort_values("_sans_ean", kind="stable")
+    nommes = produits[produits["_cle"] != "::"]
+    anonymes = produits[produits["_cle"] == "::"]
+    produits = pd.concat([nommes.drop_duplicates(subset="_cle", keep="first"), anonymes])
+    retires = avant - len(produits)
+    if retires:
+        print(f"  {retires} doublons retirés (même code, ou même marque et même nom dans deux sources)")
+    return produits.drop(columns=["_cle", "_sans_ean"]).sort_values("code").reset_index(drop=True)
 
 
 def compiler(regles):

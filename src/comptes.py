@@ -1,7 +1,11 @@
-"""COMPTES ET VENTES (CRM et SAP fictifs) : sources -> bronze -> silver -> gold gld_dim_comptes.
+"""COMPTES ET VENTES (fictifs) : sources -> bronze -> silver -> gold gld_dim_comptes.
 
+Les comptes s'inspirent de Pegasus, le CRM des commerciaux de Givaudan, et les ventes d'un export d'ERP.
 Tout est inventé pour la démonstration et marqué « fictif ». Le statut client ou prospect
 ne dit rien de la relation réelle entre ces marques et Givaudan.
+
+Brancher un vrai export ne demande pas de toucher à ce script : une règle d'ingestion suffit,
+tant que les colonnes du contrat sont respectées.
 """
 import pandas as pd
 

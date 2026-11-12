@@ -3,7 +3,7 @@ import re
 
 import pandas as pd
 
-from commun import BRONZE, GOLD, MART, SILVER, lire
+from commun import BRONZE, GOLD, MART, SILVER, lire, slug
 from detection import lire_produits
 
 INTERDITS = re.compile(r"non[ -]conform|ill[ée]gal|interdit", re.I)
@@ -37,6 +37,9 @@ def controler():
     verifier(len(produits) > 0, "aucun produit analysable")
     verifier(not (produits["code"] == "").any(), "produit sans code")
     verifier(produits["code"].is_unique, "code produit en double")
+    cles = produits.apply(lambda l: slug(l["marque"]) + "::" + slug(l["nom"]), axis=1)
+    doublons = sorted(cles[cles.duplicated() & (cles != "::")].unique())
+    verifier(not doublons, f"même produit présent dans deux sources : {doublons[:3]}")
 
     # chaque marque collectée est rattachée à un compte
     sans_compte = sorted(set(produits["marque"]) - set(marques["marque"]))

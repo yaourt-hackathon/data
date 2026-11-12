@@ -145,8 +145,15 @@ class ProduitTouche(BaseModel):
 class EvenementCompte(BaseModel):
     evenement_id: str
     titre: str
+    source_nom: str = Field("", description="Le texte ou l'actualité d'où vient le fait", examples=["Règlement (UE) 2023/1545"])
+    source_url: str = Field("", description="À ouvrir depuis la fiche compte pour vérifier le fait")
+    date_echeance: str = Field("", description="Échéance de l'événement, vide s'il n'y en a pas", examples=["2028-07-31"])
     rang: int
     score: int
+    nb_probable: int = Field(0, description="Produits du compte en exposition probable pour cet événement")
+    nb_possible: int = Field(0, description="Produits du compte en exposition possible pour cet événement")
+    confiance: Confiance = Field("faible", description="faible sous 10 produits analysés, bonne à partir de 20")
+    origine_textes: Literal["gabarit", "llm_valide"] = Field("gabarit", description="Origine du champ « fait »")
     fait: str
     question: str
     produits: list[ProduitTouche]
@@ -307,13 +314,18 @@ def compte(compte_id: str):
     if ligne.empty:
         raise HTTPException(status_code=404, detail=f"Compte inconnu : {compte_id}")
     c, textes = ligne.iloc[0], textes_valides()
-    titres = evts.set_index("evenement_id")["titre"].to_dict()
+    infos = evts.set_index("evenement_id")[["titre", "source_nom", "source_url", "date_echeance"]].to_dict("index")
     blocs = []
     for _, a in appels[appels["compte_id"] == c["compte_id"]].sort_values("evenement_id").iterrows():
         j = appel_json(a, textes)
         produits = fiche[(fiche["compte_id"] == c["compte_id"]) & (fiche["evenement_id"] == a["evenement_id"])]
-        blocs.append({"evenement_id": a["evenement_id"], "titre": titres.get(a["evenement_id"], ""), "rang": j["rang"],
-                      "score": j["score"], "fait": j["fait"], "question": j["question"],
+        e = infos.get(a["evenement_id"], {})
+        blocs.append({"evenement_id": a["evenement_id"], "titre": e.get("titre", ""),
+                      "source_nom": e.get("source_nom", ""), "source_url": e.get("source_url", ""),
+                      "date_echeance": e.get("date_echeance", ""), "rang": j["rang"], "score": j["score"],
+                      "nb_probable": j["nb_probable"], "nb_possible": j["nb_possible"],
+                      "confiance": j["confiance"], "origine_textes": j["origine_textes"],
+                      "fait": j["fait"], "question": j["question"],
                       "produits": [{"code_barre": p["code"], "marque": p["marque"], "nom": p["nom"], "niveau": p["niveau"],
                                     "elements_directs": liste(p["elements_directs"]),
                                     "elements_indices": liste(p["elements_indices"]), "type_rincage": p["type_rincage"],

@@ -37,9 +37,13 @@ def controler():
     verifier(len(produits) > 0, "aucun produit analysable")
     verifier(not (produits["code"] == "").any(), "produit sans code")
     verifier(produits["code"].is_unique, "code produit en double")
-    cles = produits.apply(lambda l: slug(l["marque"]) + "::" + slug(l["nom"]), axis=1)
-    doublons = sorted(cles[cles.duplicated() & (cles != "::")].unique())
-    verifier(not doublons, f"même produit présent dans deux sources : {doublons[:3]}")
+    # Deux références d'une même source (deux contenances) sont normales ; le même produit
+    # vu par deux sources ne l'est pas : lire_produits() doit l'avoir rapproché.
+    cles = produits.assign(cle=produits.apply(lambda l: slug(l["marque"]) + "::" + slug(l["nom"]), axis=1))
+    cles = cles[cles["cle"] != "::"]
+    vues = cles.groupby("cle")["source"].nunique()
+    doublons = sorted(vues[vues > 1].index)
+    verifier(not doublons, f"même produit vu par deux sources et non rapproché : {doublons[:3]}")
 
     # chaque marque collectée est rattachée à un compte
     sans_compte = sorted(set(produits["marque"]) - set(marques["marque"]))

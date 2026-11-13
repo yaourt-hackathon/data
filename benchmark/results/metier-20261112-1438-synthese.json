@@ -1,0 +1,82 @@
+{
+ "qwen2.5:1.5b": {
+  "dimensions": {
+   "Exactitude": 0.7,
+   "Factualité": 0.4,
+   "Sécurité": 0.33,
+   "Raisonnement": 0.33,
+   "Robustesse": 0.33,
+   "Pertinence": 0.72,
+   "Performance": 1.0
+  },
+  "total": 0.512,
+  "note_sur_5": 2.56,
+  "latence_moy_s": 3.7,
+  "ram_gb": 1.17,
+  "refus_corrects": "2/6",
+  "refus_ok": false,
+  "score_v01_comparable": 0.56,
+  "erreurs": 0,
+  "retenu": false
+ },
+ "llama3.2:3b": {
+  "dimensions": {
+   "Exactitude": 0.6,
+   "Factualité": 0.8,
+   "Sécurité": 1.0,
+   "Raisonnement": 0.67,
+   "Robustesse": 0.92,
+   "Pertinence": 0.83,
+   "Performance": 0.72
+  },
+  "total": 0.778,
+  "note_sur_5": 3.89,
+  "latence_moy_s": 13.9,
+  "ram_gb": 2.94,
+  "refus_corrects": "5/6",
+  "refus_ok": false,
+  "score_v01_comparable": 0.71,
+  "erreurs": 0,
+  "retenu": false
+ },
+ "gemma3:4b": {
+  "dimensions": {
+   "Exactitude": 0.7,
+   "Factualité": 0.4,
+   "Sécurité": 0.67,
+   "Raisonnement": 0.33,
+   "Robustesse": 0.58,
+   "Pertinence": 0.89,
+   "Performance": 1.0
+  },
+  "total": 0.606,
+  "note_sur_5": 3.03,
+  "latence_moy_s": 9.3,
+  "ram_gb": 3.49,
+  "refus_corrects": "3/6",
+  "refus_ok": false,
+  "score_v01_comparable": 0.68,
+  "erreurs": 0,
+  "retenu": false
+ },
+ "qwen2.5:7b": {
+  "dimensions": {
+   "Exactitude": 0.7,
+   "Factualité": 1.0,
+   "Sécurité": 0.67,
+   "Raisonnement": 1.0,
+   "Robustesse": 0.58,
+   "Pertinence": 0.89,
+   "Performance": 0.78
+  },
+  "total": 0.812,
+  "note_sur_5": 4.06,
+  "latence_moy_s": 12.8,
+  "ram_gb": 5.15,
+  "refus_corrects": "5/6",
+  "refus_ok": false,
+  "score_v01_comparable": 0.85,
+  "erreurs": 0,
+  "retenu": false
+ }
+}

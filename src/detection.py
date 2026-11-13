@@ -19,6 +19,19 @@ COLONNES = ["evenement_id", "code", "marque", "nom", "type_rincage", "niveau", "
             "elements_indices", "nb_indices", "contient_parfum", "motif", "date_fiche", "confiance", "source"]
 
 
+def garder_la_plus_recente(produits):
+    """Un même code-barres vu plusieurs fois : on garde la capture la plus récente.
+
+    Une source rafraîchie dans le temps (trois mois de scraping) contient le même produit
+    à plusieurs dates. Sans ça, on afficherait une étiquette périmée alors qu'on en a une à jour.
+    """
+    ordre = produits.assign(
+        _extraction=pd.to_datetime(produits.get("date_extraction", ""), errors="coerce"),
+        _fiche=pd.to_datetime(produits.get("date_fiche", ""), errors="coerce"),
+    ).sort_values(["_extraction", "_fiche"], ascending=False, na_position="last", kind="stable")
+    return produits.loc[ordre.drop_duplicates(subset="code", keep="first").index]
+
+
 def cle_produit(ligne):
     """Clé de rapprochement ENTRE SOURCES : la marque et le nom, sans accent ni ponctuation.
 
@@ -41,7 +54,7 @@ def lire_produits(bavard=False):
     fichiers = [f for f in sorted(PRODUITS.glob("slv_msd_produits*.csv")) if not f.stem.endswith("_rejets")]
     produits = pd.concat([lire(f) for f in fichiers], ignore_index=True)
     avant = len(produits)
-    produits = produits.drop_duplicates(subset="code", keep="first")
+    produits = garder_la_plus_recente(produits)
 
     produits["_cle"] = produits.apply(cle_produit, axis=1)
     produits["_sans_ean"] = produits["code"].str.startswith("URL-")

@@ -1,0 +1,35 @@
+{
+  "_note": "Corpus FICTIF : passages réglementaires en anglais + notes internes en français, avec des passages pièges au vocabulaire proche. Questions en français.",
+  "passages": {
+    "P01": "Citral: the maximum concentration in leave-on skin products (Category 4) is reduced from 0.6% to 0.4% in the finished product.",
+    "P02": "Citral in rinse-off products such as shower gels and shampoos (Category 9) remains authorised at up to 1.2% in the finished product.",
+    "P03": "Methyl eugenol is prohibited in all leave-on products. In rinse-off products, the maximum authorised level is 0.01%.",
+    "P04": "Coumarin: no change to the concentration limit. Labelling remains mandatory above 0.001% in leave-on products and above 0.01% in rinse-off products.",
+    "P05": "New products placed on the market from 15 January 2027 must comply immediately. Products already on the market must comply by 15 September 2027.",
+    "P06": "Hydroxycitronellal: the restriction for oral care products (toothpaste, mouthwash) is aligned with the limit for lip products.",
+    "P07": "Candles and home fragrance products (Category 11) are outside the scope of this amendment and are covered by a separate standard.",
+    "P08": "Benzyl salicylate: a safety review has been opened; no new limit applies before the conclusions expected in 2028.",
+    "P09": "Les clients de la zone EMEA demandent davantage de parfums « clean label » pour les soins sans rinçage.",
+    "P10": "L'accord CitruNova offre un profil citronné sans citral ; il est validé en interne comme alternative pour les soins sans rinçage.",
+    "P11": "Le délai moyen de reformulation annoncé par l'équipe d'application est de 10 semaines, tests de stabilité compris.",
+    "P12": "Lumea Cosmetics a lancé en 2025 une gamme corps dont le Lait corps Douceur, parfumé avec un accord citronné.",
+    "P13": "Les ventes de bougies parfumées progressent de 8 % par an en Europe selon la dernière étude de marché.",
+    "P14": "L'accord Zest-21 contient 0,1 % de citral ; il est réservé aux produits rincés ou aux faibles dosages.",
+    "P15": "Limonene and linalool are listed among the fragrance allergens that must be declared on the label above the thresholds set by the cosmetics regulation.",
+    "P16": "Children's toys containing fragrances are subject to the toy safety directive, which lists prohibited fragrance substances."
+  },
+  "questions": [
+    {"q": "Quelle est la nouvelle limite du citral dans une crème pour le corps ?", "expected": "P01"},
+    {"q": "Peut-on encore mettre du citral à 1 % dans un gel douche ?", "expected": "P02"},
+    {"q": "Le methyl eugenol est-il interdit dans les soins sans rinçage ?", "expected": "P03"},
+    {"q": "À partir de quel seuil faut-il étiqueter la coumarine ?", "expected": "P04"},
+    {"q": "Quelle est la date limite de mise en conformité des produits déjà commercialisés ?", "expected": "P05"},
+    {"q": "Les bougies parfumées sont-elles concernées par cet amendement réglementaire ?", "expected": "P07"},
+    {"q": "Quelle alternative sans citral peut-on proposer à un client ?", "expected": "P10"},
+    {"q": "Combien de temps faut-il pour reformuler un parfum ?", "expected": "P11"},
+    {"q": "Quel produit de Lumea Cosmetics utilise un accord citronné ?", "expected": "P12"},
+    {"q": "Y a-t-il une nouvelle restriction sur le salicylate de benzyle ?", "expected": "P08"},
+    {"q": "Quels allergènes de parfum doivent figurer sur l'étiquette ?", "expected": "P15"},
+    {"q": "Quelles sont les attentes des clients européens pour les soins sans rinçage ?", "expected": "P09"}
+  ]
+}

@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Benchmark LLM — Équipe 7</title>
+<style>
+  @page { size: A4; margin: 18mm 17mm 20mm;
+    @bottom-right { content: counter(page); font: 9pt "Segoe UI", Arial, sans-serif; color: #7FA3BF; }
+    @bottom-left { content: "Équipe 7 · Benchmark LLM · v0.1"; font: 9pt "Segoe UI", Arial, sans-serif; color: #7FA3BF; } }
+  @page :first { margin: 0; @bottom-right { content: none; } @bottom-left { content: none; } }
+
+  :root {
+    --sky-50: #F4FAFF; --sky-100: #E4F3FD; --sky-200: #C7E7FA; --sky-300: #9DD4F5;
+    --sky-500: #4AAAE3; --sky-700: #1F74AD; --ink: #16324B; --muted: #5E7D96;
+    --ok: #2E9E78; --warn: #D99A2B; --bad: #D0675E; --line: #DCEBF6;
+  }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Segoe UI Variable Text", "Segoe UI", Arial, sans-serif; color: var(--ink);
+         font-size: 10.3pt; line-height: 1.55; background: #fff; }
+
+  /* ---------- Couverture ---------- */
+  .cover { height: 297mm; width: 210mm; position: relative; overflow: hidden; page-break-after: always;
+           background: linear-gradient(180deg, #A9DBF8 0%, #CDEBFC 38%, #EEF8FF 72%, #FFFFFF 100%); }
+  .cover svg.clouds { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .cover .inner { position: absolute; left: 22mm; right: 22mm; top: 62mm; }
+  .eyebrow { letter-spacing: .22em; text-transform: uppercase; font-size: 9pt; color: var(--sky-700); font-weight: 600; }
+  .cover h1 { font-family: "Segoe UI Variable Display", "Segoe UI Light", "Segoe UI", sans-serif; font-weight: 300;
+              font-size: 46pt; line-height: 1.05; margin: 6mm 0 4mm; color: var(--ink); }
+  .cover h1 b { font-weight: 600; color: var(--sky-700); }
+  .cover .sub { font-size: 13pt; color: var(--muted); max-width: 135mm; font-weight: 300; }
+  .cover .meta { position: absolute; left: 22mm; right: 22mm; bottom: 26mm; display: flex; gap: 6mm; }
+  .cover .meta .card { flex: 1; background: rgba(255,255,255,.72); border: 1px solid #fff; border-radius: 5mm;
+                       padding: 5mm 6mm; box-shadow: 0 6px 24px rgba(31,116,173,.08); }
+  .cover .meta .k { font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--sky-700); font-weight: 600; }
+  .cover .meta .v { font-size: 10pt; margin-top: 1.5mm; }
+  .badge-version { display: inline-block; margin-top: 8mm; padding: 1.6mm 4mm; border-radius: 99px;
+                   background: rgba(255,255,255,.8); color: var(--sky-700); font-size: 9pt; font-weight: 600; }
+
+  /* ---------- Contenu ---------- */
+  section { page-break-before: always; }
+  section.flow { page-break-before: auto; margin-top: 9mm; }
+  h2 { font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif; font-weight: 300; font-size: 22pt;
+       margin: 0 0 1mm; color: var(--ink); }
+  h2 .n { color: var(--sky-500); font-weight: 600; margin-right: 3mm; }
+  .lead { color: var(--muted); font-size: 11pt; margin: 0 0 6mm; font-weight: 300; }
+  h3 { font-size: 11.5pt; margin: 6mm 0 2mm; color: var(--sky-700); font-weight: 600; }
+  p { margin: 0 0 3mm; }
+  ul { margin: 0 0 3mm; padding-left: 5mm; } li { margin-bottom: 1.2mm; }
+  .rule { height: 1.2mm; width: 18mm; border-radius: 99px; background: linear-gradient(90deg, var(--sky-500), var(--sky-200)); margin: 2mm 0 6mm; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; }
+  .panel { background: var(--sky-50); border: 1px solid var(--line); border-radius: 4mm; padding: 4.5mm 5mm; }
+  .panel .k { font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--sky-700); font-weight: 600; margin-bottom: 1mm; }
+  .stat { font-size: 20pt; font-weight: 300; color: var(--ink); line-height: 1.1; }
+  .stat small { font-size: 9pt; color: var(--muted); font-weight: 400; }
+  .callout { border-left: 1.2mm solid var(--sky-500); background: var(--sky-50); padding: 3.5mm 5mm; border-radius: 0 3mm 3mm 0; margin: 4mm 0; }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 9.4pt; margin: 2mm 0 4mm; }
+  th { text-align: left; font-weight: 600; color: var(--sky-700); font-size: 8.2pt; letter-spacing: .06em; text-transform: uppercase;
+       padding: 2.4mm 3mm; border-bottom: 1.5px solid var(--sky-200); background: var(--sky-50); }
+  th:first-child { border-top-left-radius: 3mm; } th:last-child { border-top-right-radius: 3mm; }
+  td { padding: 2.4mm 3mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.c, th.c { text-align: center; } td.r, th.r { text-align: right; }
+  table.tight td, table.tight th { padding-top: 1.5mm; padding-bottom: 1.5mm; }
+  tr.total td { font-weight: 600; background: var(--sky-50); border-bottom: none; }
+  code { font-family: "Cascadia Code", Consolas, monospace; font-size: 8.8pt; background: var(--sky-100); padding: .3mm 1.4mm; border-radius: 1.2mm; }
+  pre { font-family: "Cascadia Code", Consolas, monospace; font-size: 8.6pt; background: var(--sky-50); border: 1px solid var(--line);
+        border-radius: 3mm; padding: 3.5mm 4.5mm; white-space: pre-wrap; margin: 2mm 0 4mm; }
+
+  .pill { display: inline-block; padding: .6mm 2.6mm; border-radius: 99px; font-size: 8pt; font-weight: 600; white-space: nowrap; }
+  .p-ok { background: #E1F4EC; color: var(--ok); } .p-warn { background: #FBF0DA; color: #A87212; }
+  .p-bad { background: #F8E3E0; color: var(--bad); } .p-sky { background: var(--sky-100); color: var(--sky-700); }
+
+  /* Fiches modèles */
+  .model { border: 1px solid var(--line); border-radius: 4.5mm; padding: 4.5mm 5.5mm; margin-bottom: 4.5mm; break-inside: avoid;
+           background: linear-gradient(180deg, #FFFFFF 0%, var(--sky-50) 100%); }
+  .model .head { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; margin-bottom: 1.5mm; }
+  .model .name { font-size: 13pt; font-weight: 600; font-family: "Cascadia Code", Consolas, monospace; color: var(--ink); }
+  .model .role { color: var(--muted); font-size: 9.5pt; margin-bottom: 2.5mm; }
+  .facts { display: flex; flex-wrap: wrap; gap: 2mm; margin-bottom: 3mm; }
+  .fact { font-size: 8.4pt; background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: .5mm 2.6mm; color: var(--muted); }
+  .fact b { color: var(--ink); font-weight: 600; }
+  .pc { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; font-size: 9.4pt; }
+  .pc .t { font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 1mm; }
+  .pc .plus .t { color: var(--ok); } .pc .minus .t { color: var(--bad); }
+  .pc ul { padding-left: 4mm; margin: 0; }
+  .verdict { margin-top: 3mm; padding-top: 2.5mm; border-top: 1px dashed var(--sky-200); font-size: 9.6pt; }
+  .verdict b { color: var(--sky-700); }
+
+  /* Barres */
+  .bars { margin: 2mm 0 2mm; }
+  .bar-row { display: grid; grid-template-columns: 34mm 1fr 1fr; gap: 4mm; align-items: center; margin-bottom: 2.2mm; font-size: 9pt; }
+  .bar { height: 4.2mm; background: var(--sky-100); border-radius: 99px; position: relative; overflow: hidden; }
+  .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; }
+  .bar.a i { background: linear-gradient(90deg, #9DD4F5, #6CC0EE); }
+  .bar.b i { background: linear-gradient(90deg, #4AAAE3, #1F74AD); }
+  .bar span { position: absolute; right: 2mm; top: -0.2mm; font-size: 7.8pt; color: var(--ink); font-weight: 600; }
+  .legend { display: flex; gap: 6mm; font-size: 8.6pt; color: var(--muted); margin: 1mm 0 3mm 38mm; }
+  .legend i { display: inline-block; width: 3mm; height: 3mm; border-radius: 99px; margin-right: 1.5mm; vertical-align: -0.3mm; }
+
+  /* Architecture */
+  .flow-diagram { display: flex; align-items: stretch; gap: 0; margin: 4mm 0 2mm; }
+  .node { flex: 1; background: #fff; border: 1px solid var(--sky-200); border-radius: 3.5mm; padding: 3mm 2.5mm; text-align: center; font-size: 8.6pt; }
+  .node b { display: block; font-size: 9.2pt; color: var(--ink); margin-bottom: .8mm; }
+  .node .who { display: inline-block; margin-top: 1.5mm; font-size: 7.4pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: .3mm 2mm; border-radius: 99px; }
+  .node.llm { background: var(--sky-50); border-color: var(--sky-300); }
+  .who.llm { background: var(--sky-200); color: var(--sky-700); } .who.code { background: #E1F4EC; color: var(--ok); } .who.emb { background: #EFE9FB; color: #6C55B5; }
+  .arrow { width: 6mm; display: flex; align-items: center; justify-content: center; color: var(--sky-500); font-size: 12pt; }
+  .small { font-size: 8.8pt; color: var(--muted); }
+  .avoid { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ======================= COUVERTURE ======================= -->
+<div class="cover">
+  <svg class="clouds" viewBox="0 0 210 297" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter>
+      <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="168" cy="38" r="34" fill="url(#sun)"/>
+    <g fill="#FFFFFF" filter="url(#soft)">
+      <g opacity=".9"><ellipse cx="40" cy="30" rx="26" ry="7"/><ellipse cx="52" cy="25" rx="14" ry="9"/><ellipse cx="33" cy="27" rx="10" ry="6"/></g>
+      <g opacity=".75"><ellipse cx="150" cy="96" rx="34" ry="8"/><ellipse cx="160" cy="89" rx="17" ry="11"/><ellipse cx="141" cy="91" rx="12" ry="7"/></g>
+      <g opacity=".6"><ellipse cx="70" cy="168" rx="40" ry="8"/><ellipse cx="82" cy="160" rx="20" ry="11"/><ellipse cx="60" cy="163" rx="13" ry="7"/></g>
+      <g opacity=".55"><ellipse cx="178" cy="196" rx="30" ry="6"/><ellipse cx="186" cy="190" rx="14" ry="8"/></g>
+      <g opacity=".5"><ellipse cx="22" cy="214" rx="26" ry="5.5"/><ellipse cx="30" cy="209" rx="12" ry="7"/></g>
+    </g>
+    <path d="M -5 255 C 50 238, 110 268, 215 246 L 215 300 L -5 300 Z" fill="#FFFFFF" opacity=".55"/>
+  </svg>
+  <div class="inner">
+    <div class="eyebrow">Hackathon Givaudan · Hetic · Équipe 7</div>
+    <h1>Benchmark<br><b>LLM locaux</b></h1>
+    <div class="sub">Quels modèles Ollama, exécutables sur un PC de 16&nbsp;Go, pour un assistant qui aide les commerciaux de Givaudan à anticiper les besoins de leurs clients&nbsp;?</div>
+    <span class="badge-version">Version 0.1 · préliminaire · 10 novembre 2026</span>
+  </div>
+  <div class="meta">
+    <div class="card"><div class="k">Product</div><div class="v">Nathan · Maud</div></div>
+    <div class="card"><div class="k">Data</div><div class="v">Judicha · Abdourahmane · Fidélia</div></div>
+    <div class="card"><div class="k">Tech</div><div class="v">Maxime</div></div>
+  </div>
+</div>
+
+<!-- ======================= 1. CONTEXTE ======================= -->
+<section>
+  <h2><span class="n">01</span>Contexte et objectif</h2>
+  <div class="rule"></div>
+  <p class="lead">Choisir, avec peu de temps, une architecture et des modèles qui tiennent sur nos ordinateurs et répondent juste.</p>
+
+  <h3>La mission</h3>
+  <p>Nous construisons une application qui prépare les commerciaux de Givaudan aux besoins de leurs clients. Elle analyse des <b>sources externes</b> (réglementation, veille marché) et les <b>données internes</b> (clients, produits, formules). Exemple type&nbsp;: lorsqu'une nouvelle restriction sur un ingrédient est publiée, l'application identifie les clients concernés et aide le commercial à les contacter avec une proposition de reformulation.</p>
+
+  <h3>Les contraintes</h3>
+  <div class="grid3">
+    <div class="panel"><div class="k">Mémoire</div><div class="stat">16 Go <small>RAM</small></div><div class="small">≈ 8 à 10 Go réellement disponibles pour le modèle, une fois Windows et les outils de développement ouverts.</div></div>
+    <div class="panel"><div class="k">Exécution</div><div class="stat">100 % <small>local</small></div><div class="small">Modèles servis par Ollama sur le poste. Les données clients ne quittent pas la machine.</div></div>
+    <div class="panel"><div class="k">Temps</div><div class="stat">Hackathon</div><div class="small">Protocole court, automatisé, rejouable en une commande.</div></div>
+  </div>
+
+  <h3>Ce que le benchmark doit trancher</h3>
+  <ul>
+    <li><b>Quel LLM</b> pour extraire l'information des sources et rédiger pour le commercial&nbsp;?</li>
+    <li><b>Quel modèle d'embeddings</b> pour retrouver le bon passage, avec des questions en français et des sources souvent en anglais&nbsp;?</li>
+    <li><b>Quelle répartition des rôles</b> entre le LLM et le code applicatif&nbsp;?</li>
+  </ul>
+
+  <div class="callout"><b>Règle de décision.</b> Nous retiendrons le <b>plus petit modèle</b> qui atteint le niveau de qualité visé (≥ 80 % à la notation, aucune information inventée sur les questions sans réponse) avec une latence acceptable en démonstration (≈ 10 s par réponse).</div>
+</section>
+
+<!-- ======================= 2. ARCHITECTURE ======================= -->
+<section>
+  <h2><span class="n">02</span>Architecture envisagée</h2>
+  <div class="rule"></div>
+  <p class="lead">Un RAG (recherche documentaire + génération), où chaque brique fait ce qu'elle fait le mieux.</p>
+
+  <div class="flow-diagram">
+    <div class="node"><b>Sources</b>Réglementation, veille marché<br><span class="who emb">documents</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Recherche</b>Embeddings + base vectorielle (Chroma)<br><span class="who emb">embeddings</span></div>
+    <div class="arrow">→</div>
+    <div class="node llm"><b>Extraction</b>Substance, limite, catégorie, date → JSON<br><span class="who llm">LLM</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Croisement</b>Comparaison avec les formules clients<br><span class="who code">code</span></div>
+    <div class="arrow">→</div>
+    <div class="node llm"><b>Rédaction</b>Alerte, priorisation, e-mail client<br><span class="who llm">LLM</span></div>
+  </div>
+  <p class="small">Un prototype fonctionnel de la partie recherche + génération existe déjà (API FastAPI, Chroma, Ollama).</p>
+
+  <h3>Pourquoi le croisement est confié au code</h3>
+  <p>Comparer une concentration à un seuil, filtrer des produits par catégorie ou faire un calcul de dilution sont des opérations exactes. Les premiers tests (section 05) montrent que les petits modèles s'y trompent régulièrement (« 0,9 % &gt; 1,2 % »). Le LLM est donc limité à ce qu'il fait bien&nbsp;: <b>comprendre un texte</b> et <b>rédiger</b>. Le code garantit l'exactitude des chiffres présentés au commercial.</p>
+
+  <h3>Conséquences sur le choix des modèles</h3>
+  <ul>
+    <li><b>Extraction structurée (JSON) fiable</b>&nbsp;: critère n°1 pour le LLM.</li>
+    <li><b>Fidélité aux sources</b>&nbsp;: dire « non mentionné » plutôt qu'inventer une limite réglementaire.</li>
+    <li><b>Multilingue</b>&nbsp;: questions en français, textes réglementaires souvent en anglais. Cela vaut pour le LLM comme pour les embeddings.</li>
+    <li><b>Taille</b>&nbsp;: modèles de 8 milliards de paramètres maximum en quantification 4 bits (≈ 5 Go). Au-delà, la machine bascule sur le disque et devient inutilisable.</li>
+  </ul>
+</section>
+
+<!-- ======================= 3. MODÈLES ======================= -->
+<section>
+  <h2><span class="n">03</span>Modèles sélectionnés et avis</h2>
+  <div class="rule"></div>
+  <p class="lead">Trois LLM de tailles croissantes et deux modèles d'embeddings, tous installés via Ollama.</p>
+
+  <div class="model">
+    <div class="head"><span class="name">qwen2.5:7b</span><span class="pill p-sky">Candidat principal · à tester</span></div>
+    <div class="role">LLM d'extraction et de rédaction — Alibaba Qwen 2.5, 7 milliards de paramètres</div>
+    <div class="facts"><span class="fact">Téléchargement <b>4,7 Go</b></span><span class="fact">RAM estimée <b>5–6 Go</b></span><span class="fact">Vitesse estimée <b>3–6 tok/s</b> (CPU)</span></div>
+    <div class="pc">
+      <div class="plus"><div class="t">Atouts attendus</div><ul><li>Réputé solide en sortie JSON et en suivi d'instructions</li><li>Bon niveau en français et en anglais</li><li>Contexte long, adapté aux extraits de textes réglementaires</li></ul></div>
+      <div class="minus"><div class="t">Risques</div><ul><li>Latence élevée sans GPU (20–40 s par réponse estimées)</li><li>Occupe plus de la moitié de la mémoire disponible</li></ul></div>
+    </div>
+    <div class="verdict"><b>Avis&nbsp;:</b> le meilleur rapport qualité/taille attendu dans notre budget mémoire. C'est le test prioritaire de la version 0.2. Si la latence est trop forte, on le réservera à l'extraction (faite une seule fois par texte) et on gardera un modèle plus léger pour la rédaction.</div>
+  </div>
+
+  <div class="model">
+    <div class="head"><span class="name">llama3.2:3b</span><span class="pill p-warn">Compromis · testé</span></div>
+    <div class="role">LLM léger — Meta Llama 3.2, 3 milliards de paramètres</div>
+    <div class="facts"><span class="fact">Téléchargement <b>2,0 Go</b></span><span class="fact">RAM mesurée <b>2,9 Go</b></span><span class="fact">Vitesse mesurée <b>9,5 tok/s</b></span><span class="fact">Note <b>53 %</b></span></div>
+    <div class="pc">
+      <div class="plus"><div class="t">Points forts observés</div><ul><li>Refuse correctement quand l'information est absente</li><li>N'invente pas de limite sur la coumarine</li><li>Bonne comparaison de seuil sur une question isolée</li></ul></div>
+      <div class="minus"><div class="t">Points faibles observés</div><ul><li>Erreur grave&nbsp;: déclare interdit un ingrédient autorisé dans les shampooings</li><li>Croisements multiples et priorisation incohérents</li><li>Lent sur les réponses longues (jusqu'à 49 s)</li></ul></div>
+    </div>
+    <div class="verdict"><b>Avis&nbsp;:</b> le plus fidèle aux sources des deux modèles testés, mais pas assez fiable pour être utilisé seul. Solution de repli si le 7B est trop lent.</div>
+  </div>
+
+  <div class="model">
+    <div class="head"><span class="name">qwen2.5:1.5b</span><span class="pill p-bad">Référence basse · testé</span></div>
+    <div class="role">LLM très léger — modèle du prototype initial</div>
+    <div class="facts"><span class="fact">Téléchargement <b>1,0 Go</b></span><span class="fact">RAM mesurée <b>1,2 Go</b></span><span class="fact">Vitesse mesurée <b>18,6 tok/s</b></span><span class="fact">Note <b>36 %</b></span></div>
+    <div class="pc">
+      <div class="plus"><div class="t">Points forts observés</div><ul><li>Très rapide (≈ 8 s par réponse)</li><li>JSON syntaxiquement valide</li><li>Bon résumé en français</li></ul></div>
+      <div class="minus"><div class="t">Points faibles observés</div><ul><li>Invente des valeurs absentes des sources (limonène, coumarine)</li><li>Confond les catégories de produits</li><li>Déclare non conformes tous les produits clients</li></ul></div>
+    </div>
+    <div class="verdict"><b>Avis&nbsp;:</b> écarté pour la production&nbsp;: les inventions sont incompatibles avec un usage réglementaire. Utile pour développer l'interface rapidement.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="model" style="margin-bottom:0">
+      <div class="head"><span class="name">embeddinggemma</span><span class="pill p-sky">À tester</span></div>
+      <div class="role">Embeddings — Google, ≈ 300 M de paramètres</div>
+      <div class="facts"><span class="fact"><b>621 Mo</b></span><span class="fact"><b>100+</b> langues</span><span class="fact">768 dimensions</span></div>
+      <p style="font-size:9.4pt">Multilingue&nbsp;: une question en français doit retrouver un passage en anglais. Léger, rapide sur CPU. Texte uniquement&nbsp;: <b>ne traite pas les images</b>. Nécessite des préfixes de tâche (requête / document) pour donner son meilleur niveau.</p>
+      <div class="verdict"><b>Avis&nbsp;:</b> favori pour la recherche documentaire, à confirmer face au modèle actuel.</div>
+    </div>
+    <div class="model" style="margin-bottom:0">
+      <div class="head"><span class="name">nomic-embed-text</span><span class="pill p-ok">En place</span></div>
+      <div class="role">Embeddings — Nomic AI, ≈ 137 M de paramètres</div>
+      <div class="facts"><span class="fact"><b>274 Mo</b></span><span class="fact">768 dimensions</span><span class="fact">contexte long</span></div>
+      <p style="font-size:9.4pt">Modèle du prototype actuel. Très léger et éprouvé pour la recherche en anglais. Entraîné principalement sur de l'anglais&nbsp;: risque de moins bonne correspondance entre une question en français et une source en anglais.</p>
+      <div class="verdict"><b>Avis&nbsp;:</b> base de comparaison. Conservé si l'écart avec EmbeddingGemma est faible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 4. PROTOCOLE ======================= -->
+<section>
+  <h2><span class="n">04</span>Protocole</h2>
+  <div class="rule"></div>
+  <p class="lead">Automatisé, rejouable en une commande, centré sur les tâches réelles de l'application.</p>
+
+  <h3>Jeu de test</h3>
+  <p>12 questions métier, posées avec leurs sources dans le prompt. Les sources sont <b>volontairement fictives</b> (avis réglementaire en anglais, extrait de base clients, note de veille marché)&nbsp;: le modèle ne peut pas répondre de mémoire, on mesure donc sa capacité à <b>lire et respecter les sources</b>.</p>
+  <table class="tight">
+    <tr><th>Catégorie</th><th class="c">Questions</th><th>Ce qui est mesuré</th></tr>
+    <tr><td>Extraction</td><td class="c">2</td><td>Retrouver une limite, une date, une catégorie de produit</td></tr>
+    <tr><td>Extraction JSON</td><td class="c">1</td><td>Sortie structurée exploitable par le code</td></tr>
+    <tr><td>Croisement</td><td class="c">2</td><td>Confronter la réglementation aux produits clients</td></tr>
+    <tr><td>Synthèse commerciale</td><td class="c">2</td><td>E-mail client, priorisation des contacts</td></tr>
+    <tr><td>Refus</td><td class="c">2</td><td>Dire « non mentionné » au lieu d'inventer</td></tr>
+    <tr><td>Fidélité au contexte</td><td class="c">1</td><td>Ne pas transformer un seuil d'étiquetage en limite</td></tr>
+    <tr><td>Calcul</td><td class="c">1</td><td>Dilution d'un ingrédient dans le produit fini</td></tr>
+    <tr><td>Résumé multilingue</td><td class="c">1</td><td>Résumer en français un texte anglais</td></tr>
+  </table>
+
+  <h3>Conditions d'exécution</h3>
+  <div class="grid2">
+    <ul>
+      <li>Température 0, graine fixe (42) : résultats reproductibles</li>
+      <li>Fenêtre de contexte fixée à 4 096 tokens, réponse limitée à 600 tokens</li>
+      <li>Même prompt système pour tous les modèles</li>
+    </ul>
+    <ul>
+      <li>Premier appel de chauffe exclu des mesures</li>
+      <li>Un seul modèle chargé à la fois</li>
+      <li>Même machine (16 Go), autres applications fermées</li>
+    </ul>
+  </div>
+
+  <h3>Mesures</h3>
+  <div class="grid2">
+    <div class="panel"><div class="k">Automatiques</div>Mots-clés attendus, validité du JSON, détection du refus, langue de réponse. Latence totale, délai avant premier token, tokens par seconde, mémoire occupée (API Ollama).</div>
+    <div class="panel"><div class="k">Notation par IA (Claude)</div>Chaque réponse est notée de 0 à 2 sur 4 critères&nbsp;: <b>exactitude</b>, <b>fidélité aux sources</b>, <b>complétude</b>, <b>utilité pour un commercial</b>. Total sur 8 par réponse, sur 96 par modèle.</div>
+  </div>
+  <p class="small" style="margin-top:3mm">Les contrôles automatiques seuls sont trompeurs (score maximal obtenu sur une réponse entièrement fausse)&nbsp;: la notation par IA est la mesure de référence. Une relecture humaine par l'équipe Data est prévue pour la version finale.</p>
+</section>
+
+<!-- ======================= 5. RÉSULTATS ======================= -->
+<section>
+  <h2><span class="n">05</span>Premiers résultats</h2>
+  <div class="rule"></div>
+  <p class="lead">Exécution du 10 novembre 2026 sur les deux modèles légers. qwen2.5:7b et la comparaison des embeddings suivront.</p>
+
+  <div class="grid3">
+    <div class="panel"><div class="k">llama3.2:3b</div><div class="stat">53 % <small>51 / 96</small></div><div class="small">17,5 s par réponse en moyenne</div></div>
+    <div class="panel"><div class="k">qwen2.5:1.5b</div><div class="stat">36 % <small>35 / 96</small></div><div class="small">8,1 s par réponse en moyenne</div></div>
+    <div class="panel"><div class="k">Objectif</div><div class="stat">≥ 80 %</div><div class="small">Aucun modèle testé ne l'atteint encore</div></div>
+  </div>
+
+  <h3>Note par catégorie (notation IA)</h3>
+  <div class="legend"><span><i style="background:#6CC0EE"></i>qwen2.5:1.5b</span><span><i style="background:#1F74AD"></i>llama3.2:3b</span></div>
+  <div class="bars">
+    <div class="bar-row"><span>Extraction</span><div class="bar a"><i style="width:56%"></i><span>9/16</span></div><div class="bar b"><i style="width:31%"></i><span>5/16</span></div></div>
+    <div class="bar-row"><span>Extraction JSON</span><div class="bar a"><i style="width:63%"></i><span>5/8</span></div><div class="bar b"><i style="width:63%"></i><span>5/8</span></div></div>
+    <div class="bar-row"><span>Croisement</span><div class="bar a"><i style="width:6%"></i><span>1/16</span></div><div class="bar b"><i style="width:56%"></i><span>9/16</span></div></div>
+    <div class="bar-row"><span>Synthèse</span><div class="bar a"><i style="width:31%"></i><span>5/16</span></div><div class="bar b"><i style="width:31%"></i><span>5/16</span></div></div>
+    <div class="bar-row"><span>Refus</span><div class="bar a"><i style="width:44%"></i><span>7/16</span></div><div class="bar b"><i style="width:81%"></i><span>13/16</span></div></div>
+    <div class="bar-row"><span>Fidélité</span><div class="bar a"><i style="width:13%"></i><span>1/8</span></div><div class="bar b"><i style="width:75%"></i><span>6/8</span></div></div>
+    <div class="bar-row"><span>Calcul</span><div class="bar a"><i style="width:13%"></i><span>1/8</span></div><div class="bar b"><i style="width:25%"></i><span>2/8</span></div></div>
+    <div class="bar-row"><span>Résumé FR</span><div class="bar a"><i style="width:75%"></i><span>6/8</span></div><div class="bar b"><i style="width:75%"></i><span>6/8</span></div></div>
+  </div>
+
+  <h3>Performances mesurées</h3>
+  <table>
+    <tr><th>Modèle</th><th class="r">Tokens / s</th><th class="r">Latence moyenne</th><th class="r">Latence max</th><th class="r">RAM</th></tr>
+    <tr><td><code>qwen2.5:1.5b</code></td><td class="r">18,6</td><td class="r">8,1 s</td><td class="r">23,7 s</td><td class="r">1,2 Go</td></tr>
+    <tr><td><code>llama3.2:3b</code></td><td class="r">9,5</td><td class="r">17,5 s</td><td class="r">49,4 s</td><td class="r">2,9 Go</td></tr>
+  </table>
+
+  <h3>Enseignements</h3>
+  <ul>
+    <li><b>Aucun des deux modèles légers n'est utilisable seul</b> pour un outil réglementaire&nbsp;: trop d'erreurs factuelles sur des questions simples.</li>
+    <li><b>Croisement et calcul échouent chez les deux</b>. Cela confirme le choix d'architecture&nbsp;: la comparaison avec les données clients est faite par le code.</li>
+    <li><b>La taille joue surtout sur la fidélité</b>&nbsp;: le 3B invente nettement moins que le 1.5B. Le 7B devrait poursuivre cette tendance.</li>
+  </ul>
+</section>
+
+<!-- ======================= 6. RECOMMANDATION ======================= -->
+<section>
+  <h2><span class="n">06</span>Recommandation provisoire</h2>
+  <div class="rule"></div>
+  <p class="lead">À confirmer par les tests de la version 0.2.</p>
+
+  <table>
+    <tr><th>Brique</th><th>Choix provisoire</th><th>Alternative</th><th>Statut</th></tr>
+    <tr><td>LLM extraction</td><td><code>qwen2.5:7b</code></td><td><code>llama3.2:3b</code></td><td><span class="pill p-warn">à tester</span></td></tr>
+    <tr><td>LLM rédaction</td><td><code>qwen2.5:7b</code></td><td><code>llama3.2:3b</code> si latence trop forte</td><td><span class="pill p-warn">à tester</span></td></tr>
+    <tr><td>Embeddings</td><td><code>embeddinggemma</code></td><td><code>nomic-embed-text</code></td><td><span class="pill p-warn">à tester</span></td></tr>
+    <tr><td>Croisement clients</td><td>Code (Python / SQL)</td><td>—</td><td><span class="pill p-ok">validé</span></td></tr>
+    <tr><td>Développement de l'interface</td><td><code>qwen2.5:1.5b</code></td><td>—</td><td><span class="pill p-ok">validé</span></td></tr>
+  </table>
+
+  <h3>Prochaines étapes</h3>
+  <div class="grid2">
+    <div class="panel"><div class="k">Version 0.2</div><ul style="margin:0"><li>Exécuter le benchmark sur <code>qwen2.5:7b</code></li><li>Comparer les embeddings (taux de bon passage retrouvé dans les 4 premiers résultats) sur des questions en français et des sources en anglais</li></ul></div>
+    <div class="panel"><div class="k">Version finale</div><ul style="margin:0"><li>Remplacer les sources fictives par les données du hackathon</li><li>Relecture humaine des notes par l'équipe Data</li><li>Mesure sur chaque poste de démonstration</li></ul></div>
+  </div>
+
+  <h3>Pistes écartées ou optionnelles</h3>
+  <ul>
+    <li><b>Modèles de plus de 8 milliards de paramètres</b>&nbsp;: écartés, ils dépassent la mémoire disponible.</li>
+    <li><b>Fine-tuning</b>&nbsp;: écarté, trop long pour le format hackathon, au profit du RAG.</li>
+    <li><b><code>bge-m3</code></b> (embeddings multilingues)&nbsp;: troisième candidat si EmbeddingGemma déçoit.</li>
+    <li><b><code>gemma3:4b</code></b> (modèle de vision)&nbsp;: uniquement si les sources contiennent des documents scannés ou des tableaux en image. Il les convertirait en texte avant l'indexation.</li>
+  </ul>
+
+  <h3>Reproduire le benchmark</h3>
+<pre>ollama pull qwen2.5:1.5b ; ollama pull llama3.2:3b ; ollama pull qwen2.5:7b
+ollama pull nomic-embed-text ; ollama pull embeddinggemma
+python bench.py --models qwen2.5:1.5b llama3.2:3b qwen2.5:7b</pre>
+  <p class="small">Le script (Python standard, sans dépendance) produit un fichier de résultats détaillé et une feuille de réponses côte à côte pour la notation.</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+{
+  "_note": "Contextes FICTIFS écrits pour le test (limites, dates et clients inventés). Le modèle doit répondre à partir du contexte, pas de ses connaissances.",
+  "contexts": {
+    "reg_en": "[SOURCE: Fictional regulatory notice FRN-2026-14, published 2026-03-02]\nAmendment to the fragrance ingredient standard.\n1. Citral: maximum concentration in leave-on skin products (Category 4) is reduced from 0.6% to 0.4% in the finished product. Rinse-off products (Category 9) remain at 1.2%.\n2. Methyl eugenol: prohibited in all leave-on products. In rinse-off products the limit is 0.01%.\n3. Coumarin: no change. Labelling remains mandatory above 0.001% in leave-on products and above 0.01% in rinse-off products.\nApplication: new products placed on the market from 2027-01-15; existing products must comply by 2027-09-15.",
+    "clients_csv": "[SOURCE: Extrait fictif base clients]\nclient;produit;categorie;ingredient;concentration_%\nLumea Cosmetics;Lait corps Douceur;leave-on;Citral;0.5\nLumea Cosmetics;Gel douche Agrume;rinse-off;Citral;0.9\nVerdane;Crème mains Atelier;leave-on;Methyl eugenol;0.002\nVerdane;Shampooing Forêt;rinse-off;Methyl eugenol;0.008\nPolaris Home;Bougie Ambre;home-care;Coumarin;1.5\nNoria Skin;Sérum Éclat;leave-on;Citral;0.3",
+    "marche_fr": "[SOURCE: Note interne fictive - veille marché, octobre 2026]\nLes clients de la zone EMEA demandent davantage de parfums « clean label » pour les soins sans rinçage. Deux alternatives au citral sont validées en interne : l'accord CitruNova (profil citronné, sans citral) et l'accord Zest-21 (contient 0,1 % de citral). Le délai de reformulation moyen annoncé par l'équipe d'application est de 10 semaines."
+  },
+  "questions": [
+    {
+      "id": "Q01", "type": "extraction", "contexts": ["reg_en"],
+      "question": "Quelle est la nouvelle limite du citral dans les produits sans rinçage, et à partir de quand s'applique-t-elle aux produits déjà sur le marché ?",
+      "expected": "0,4 % dans le produit fini (catégorie 4, leave-on), au lieu de 0,6 %. Produits existants : conformité au 15/09/2027 (nouveaux produits : 15/01/2027).",
+      "must_contain": [["0,4", "0.4"], ["2027-09-15", "15/09/2027", "15 septembre 2027", "septembre 2027"]]
+    },
+    {
+      "id": "Q02", "type": "extraction", "contexts": ["reg_en"],
+      "question": "Le methyl eugenol est-il encore autorisé dans un shampooing ? Si oui, à quelle concentration maximale ?",
+      "expected": "Oui, un shampooing est rincé : limite 0,01 %. Interdit uniquement dans les produits sans rinçage.",
+      "must_contain": [["0,01", "0.01"]]
+    },
+    {
+      "id": "Q03", "type": "extraction_json", "contexts": ["reg_en"],
+      "question": "Liste toutes les restrictions du texte au format JSON : un tableau d'objets avec les clés \"substance\", \"categorie\" (\"leave-on\" ou \"rinse-off\"), \"limite_pourcent\" (nombre, 0 si interdit). Réponds uniquement avec le JSON.",
+      "expected": "[{Citral, leave-on, 0.4}, {Citral, rinse-off, 1.2}, {Methyl eugenol, leave-on, 0}, {Methyl eugenol, rinse-off, 0.01}] — la coumarine n'a pas de limite (seulement un seuil d'étiquetage) et peut être omise ou signalée.",
+      "json": true,
+      "must_contain": [["1.2"], ["0.01"], ["0.4"]]
+    },
+    {
+      "id": "Q04", "type": "croisement", "contexts": ["reg_en", "clients_csv"],
+      "question": "Quels produits clients deviennent non conformes avec ce nouveau texte ? Justifie pour chacun.",
+      "expected": "Lait corps Douceur (Lumea, citral 0,5 % > 0,4 % leave-on) et Crème mains Atelier (Verdane, methyl eugenol interdit en leave-on). Pas concernés : Gel douche Agrume (0,9 % < 1,2 %), Shampooing Forêt (0,008 % < 0,01 %), Sérum Éclat (0,3 % < 0,4 %), Bougie Ambre (home-care, hors champ).",
+      "must_contain": [["Douceur"], ["Atelier"]]
+    },
+    {
+      "id": "Q05", "type": "croisement", "contexts": ["reg_en", "clients_csv"],
+      "question": "Le Sérum Éclat de Noria Skin est-il impacté par le nouveau texte ?",
+      "expected": "Non : citral 0,3 % ≤ 0,4 % (nouvelle limite leave-on). Il reste conforme, mais avec peu de marge.",
+      "must_contain": [["non", "conforme", "pas impacté", "n'est pas"]]
+    },
+    {
+      "id": "Q06", "type": "synthese", "contexts": ["reg_en", "clients_csv", "marche_fr"],
+      "question": "Rédige un court e-mail (6 lignes max) d'un commercial Givaudan à Lumea Cosmetics pour les prévenir de l'impact du texte et leur proposer une solution.",
+      "expected": "Cite le Lait corps Douceur (citral 0,5 % > 0,4 %), l'échéance du 15/09/2027, propose CitruNova (sans citral) ou Zest-21, mentionne ~10 semaines de reformulation. Ne doit pas dire que le Gel douche Agrume est impacté. Ton professionnel, en français.",
+      "must_contain": [["Douceur"], ["CitruNova", "Zest-21"]]
+    },
+    {
+      "id": "Q07", "type": "refus", "contexts": ["reg_en"],
+      "question": "Quelle est la nouvelle limite du limonène dans les produits sans rinçage ?",
+      "expected": "Le texte ne mentionne pas le limonène : le modèle doit le dire et ne pas inventer de valeur.",
+      "refusal": true
+    },
+    {
+      "id": "Q08", "type": "refus", "contexts": ["clients_csv"],
+      "question": "Quel est le chiffre d'affaires annuel de Verdane avec Givaudan ?",
+      "expected": "Information absente des sources : le modèle doit le dire.",
+      "refusal": true
+    },
+    {
+      "id": "Q09", "type": "fidelite_contexte", "contexts": ["reg_en"],
+      "question": "La coumarine est-elle soumise à une nouvelle limite de concentration dans ce texte ?",
+      "expected": "Non, aucun changement : seule l'obligation d'étiquetage (> 0,001 % leave-on, > 0,01 % rinse-off) s'applique. Le modèle ne doit pas inventer de limite.",
+      "must_contain": [["non", "aucun", "pas de"]]
+    },
+    {
+      "id": "Q10", "type": "raisonnement", "contexts": ["reg_en", "marche_fr"],
+      "question": "Un client lance un nouveau soin sans rinçage le 1er février 2027 avec l'accord Zest-21 dosé à 5 % dans le produit fini. Est-il conforme pour le citral ? Donne le calcul.",
+      "expected": "Citral = 5 % × 0,1 % = 0,005 % du produit fini, bien < 0,4 % : conforme. (Nouveau produit après le 15/01/2027 → nouvelle limite applicable.)",
+      "must_contain": [["0,005", "0.005"]]
+    },
+    {
+      "id": "Q11", "type": "multilingue", "contexts": ["reg_en"],
+      "question": "Résume ce texte réglementaire en 3 puces maximum, en français, pour un commercial non spécialiste.",
+      "expected": "3 puces en français : citral leave-on 0,6→0,4 % ; methyl eugenol interdit en leave-on (0,01 % rinse-off) ; dates 15/01/2027 (nouveaux) et 15/09/2027 (existants). Coumarine inchangée éventuellement.",
+      "must_contain": [["citral", "Citral"], ["2027"]]
+    },
+    {
+      "id": "Q12", "type": "synthese", "contexts": ["reg_en", "clients_csv"],
+      "question": "Classe les clients par priorité de contact commercial suite à ce texte, en une phrase de justification par client.",
+      "expected": "Priorité haute : Lumea (Lait corps Douceur non conforme) et Verdane (Crème mains Atelier non conforme, interdiction totale). Priorité moyenne/veille : Noria (Sérum Éclat conforme mais proche de la limite). Faible : Polaris (home-care, hors champ).",
+      "must_contain": [["Lumea"], ["Verdane"]]
+    }
+  ]
+}
